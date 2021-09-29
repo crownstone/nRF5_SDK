@@ -1301,8 +1301,8 @@ static __INLINE bool is_word_aligned(void const* p)
  */
 static __INLINE bool is_address_from_stack(void * ptr)
 {
-    if (((uint32_t)ptr >= (uint32_t)STACK_BASE) &&
-        ((uint32_t)ptr <  (uint32_t)STACK_TOP) )
+    if (((uintptr_t)ptr >= (uintptr_t)STACK_BASE) &&
+        ((uintptr_t)ptr <  (uintptr_t)STACK_TOP) )
     {
         return true;
     }

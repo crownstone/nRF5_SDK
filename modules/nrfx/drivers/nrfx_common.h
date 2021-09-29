@@ -193,7 +193,7 @@ do {                                                         \
  *
  * @return ID number associated with the specified peripheral.
  */
-#define NRFX_PERIPHERAL_ID_GET(base_addr)  (uint8_t)((uint32_t)(base_addr) >> 12)
+#define NRFX_PERIPHERAL_ID_GET(base_addr)  (uint8_t)((uintptr_t)(base_addr) >> 12)
 
 /**
  * @brief Macro for getting the interrupt number assigned to a specific
@@ -301,12 +301,12 @@ __STATIC_INLINE uint32_t nrfx_event_to_bitpos(uint32_t event);
 
 __STATIC_INLINE bool nrfx_is_in_ram(void const * p_object)
 {
-    return ((((uint32_t)p_object) & 0xE0000000u) == 0x20000000u);
+    return ((((uintptr_t)p_object) & 0xE0000000u) == 0x20000000u);
 }
 
 __STATIC_INLINE bool nrfx_is_word_aligned(void const * p_object)
 {
-    return ((((uint32_t)p_object) & 0x3u) == 0u);
+    return ((((uintptr_t)p_object) & 0x3u) == 0u);
 }
 
 __STATIC_INLINE IRQn_Type nrfx_get_irq_number(void const * p_reg)

@@ -187,8 +187,8 @@ __STATIC_INLINE bool nrf_uart_event_check(NRF_UART_Type * p_reg, nrf_uart_event_
  *
  * @retval Address of specified event register.
  */
-__STATIC_INLINE uint32_t nrf_uart_event_address_get(NRF_UART_Type  * p_reg,
-                                                    nrf_uart_event_t  event);
+__STATIC_INLINE uintptr_t nrf_uart_event_address_get(NRF_UART_Type  * p_reg,
+                                                    nrf_uart_event_t event);
 
 /**
  * @brief Function for enabling a specific interrupt.
@@ -334,7 +334,7 @@ __STATIC_INLINE void nrf_uart_task_trigger(NRF_UART_Type * p_reg, nrf_uart_task_
  *
  * @return      Task address.
  */
-__STATIC_INLINE uint32_t nrf_uart_task_address_get(NRF_UART_Type * p_reg, nrf_uart_task_t task);
+__STATIC_INLINE uintptr_t nrf_uart_task_address_get(NRF_UART_Type * p_reg, nrf_uart_task_t task);
 
 /**
  * @brief Function for configuring UART.
@@ -371,10 +371,10 @@ __STATIC_INLINE bool nrf_uart_event_check(NRF_UART_Type * p_reg, nrf_uart_event_
     return (bool)*(volatile uint32_t *)((uint8_t *)p_reg + (uint32_t)event);
 }
 
-__STATIC_INLINE uint32_t nrf_uart_event_address_get(NRF_UART_Type  * p_reg,
-                                                    nrf_uart_event_t  event)
+__STATIC_INLINE uintptr_t nrf_uart_event_address_get(NRF_UART_Type  * p_reg,
+                                                    nrf_uart_event_t event)
 {
-    return (uint32_t)((uint8_t *)p_reg + (uint32_t)event);
+    return (uintptr_t)((uint8_t *)p_reg + (uintptr_t)event);
 }
 
 __STATIC_INLINE void nrf_uart_int_enable(NRF_UART_Type * p_reg, uint32_t int_mask)
@@ -499,9 +499,9 @@ __STATIC_INLINE void nrf_uart_task_trigger(NRF_UART_Type * p_reg, nrf_uart_task_
     *((volatile uint32_t *)((uint8_t *)p_reg + (uint32_t)task)) = 0x1UL;
 }
 
-__STATIC_INLINE uint32_t nrf_uart_task_address_get(NRF_UART_Type * p_reg, nrf_uart_task_t task)
+__STATIC_INLINE uintptr_t nrf_uart_task_address_get(NRF_UART_Type * p_reg, nrf_uart_task_t task)
 {
-    return (uint32_t)p_reg + (uint32_t)task;
+    return (uintptr_t)p_reg + (uintptr_t)task;
 }
 
 __STATIC_INLINE void nrf_uart_configure(NRF_UART_Type   * p_reg,

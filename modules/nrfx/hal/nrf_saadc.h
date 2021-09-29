@@ -303,7 +303,7 @@ __STATIC_INLINE void nrf_saadc_task_trigger(nrf_saadc_task_t saadc_task);
  *
  * @return Address of the specified SAADC task.
  */
-__STATIC_INLINE uint32_t nrf_saadc_task_address_get(nrf_saadc_task_t saadc_task);
+__STATIC_INLINE uintptr_t nrf_saadc_task_address_get(nrf_saadc_task_t task);
 
 /**
  * @brief Function for getting the state of a specific SAADC event.
@@ -328,7 +328,7 @@ __STATIC_INLINE void nrf_saadc_event_clear(nrf_saadc_event_t saadc_event);
  *
  * @return Address of the specified SAADC event.
  */
-__STATIC_INLINE uint32_t  nrf_saadc_event_address_get(nrf_saadc_event_t saadc_event);
+__STATIC_INLINE uintptr_t nrf_saadc_event_address_get(nrf_saadc_event_t event);
 
 #if defined(DPPI_PRESENT) || defined(__NRFX_DOXYGEN__)
 /**
@@ -376,7 +376,8 @@ __STATIC_INLINE void nrf_saadc_publish_clear(nrf_saadc_event_t event);
  *
  * @return Address of the specified SAADC limit event.
  */
-__STATIC_INLINE volatile uint32_t * nrf_saadc_event_limit_address_get(uint8_t channel, nrf_saadc_limit_t limit_type);
+__STATIC_INLINE volatile uintptr_t * nrf_saadc_event_limit_address_get(uint8_t           channel,
+                                                                      nrf_saadc_limit_t limit_type);
 
 /**
  * @brief Function for getting the SAADC channel monitoring limit events.
@@ -577,9 +578,9 @@ __STATIC_INLINE void nrf_saadc_task_trigger(nrf_saadc_task_t saadc_task)
     *((volatile uint32_t *)((uint8_t *)NRF_SAADC + (uint32_t)saadc_task)) = 0x1UL;
 }
 
-__STATIC_INLINE uint32_t nrf_saadc_task_address_get(nrf_saadc_task_t saadc_task)
+__STATIC_INLINE uintptr_t nrf_saadc_task_address_get(nrf_saadc_task_t task)
 {
-    return (uint32_t)((uint8_t *)NRF_SAADC + (uint32_t)saadc_task);
+    return (uintptr_t)((uint8_t *)NRF_SAADC + (uintptr_t)task);
 }
 
 __STATIC_INLINE bool nrf_saadc_event_check(nrf_saadc_event_t saadc_event)
@@ -596,9 +597,9 @@ __STATIC_INLINE void nrf_saadc_event_clear(nrf_saadc_event_t saadc_event)
 #endif
 }
 
-__STATIC_INLINE uint32_t  nrf_saadc_event_address_get(nrf_saadc_event_t saadc_event)
+__STATIC_INLINE uintptr_t  nrf_saadc_event_address_get(nrf_saadc_event_t event)
 {
-    return (uint32_t )((uint8_t *)NRF_SAADC + (uint32_t)saadc_event);
+    return (uintptr_t )((uint8_t *)NRF_SAADC + (uint32_t)event);
 }
 
 #if defined(DPPI_PRESENT)
@@ -627,7 +628,8 @@ __STATIC_INLINE void nrf_saadc_publish_clear(nrf_saadc_event_t event)
 }
 #endif // defined(DPPI_PRESENT)
 
-__STATIC_INLINE volatile uint32_t * nrf_saadc_event_limit_address_get(uint8_t channel, nrf_saadc_limit_t limit_type)
+__STATIC_INLINE volatile uintptr_t * nrf_saadc_event_limit_address_get(uint8_t           channel,
+                                                                      nrf_saadc_limit_t limit_type)
 {
     NRFX_ASSERT(channel < NRF_SAADC_CHANNEL_COUNT);
     if (limit_type == NRF_SAADC_LIMIT_HIGH)
@@ -725,13 +727,13 @@ __STATIC_INLINE bool nrf_saadc_enable_check(void)
 __STATIC_INLINE void nrf_saadc_buffer_init(nrf_saadc_value_t * p_buffer,
                                            uint32_t            size)
 {
-    NRF_SAADC->RESULT.PTR = (uint32_t)p_buffer;
+    NRF_SAADC->RESULT.PTR = (uintptr_t)p_buffer;
     NRF_SAADC->RESULT.MAXCNT = size;
 }
 
 __STATIC_INLINE void nrf_saadc_buffer_pointer_set(nrf_saadc_value_t * p_buffer)
 {
-    NRF_SAADC->RESULT.PTR = (uint32_t)p_buffer;
+    NRF_SAADC->RESULT.PTR = (uintptr_t)p_buffer;
 }
 
 __STATIC_INLINE nrf_saadc_value_t * nrf_saadc_buffer_pointer_get(void)

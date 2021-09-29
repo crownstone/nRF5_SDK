@@ -172,7 +172,7 @@ __STATIC_INLINE void nrfx_coredep_delay_us(uint32_t time_us)
     typedef void (* delay_func_t)(uint32_t);
     const delay_func_t delay_cycles =
         // Set LSB to 1 to execute the code in the Thumb mode.
-        (delay_func_t)((((uint32_t)delay_machine_code) | 1));
+        (delay_func_t)((((uintptr_t)delay_machine_code) | 1));
     uint32_t cycles = time_us * NRFX_DELAY_CPU_FREQ_MHZ;
     delay_cycles(cycles);
 }

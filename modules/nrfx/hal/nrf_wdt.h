@@ -217,7 +217,7 @@ __STATIC_INLINE void nrf_wdt_publish_clear(nrf_wdt_event_t event);
  *
  * @param[in]  task             Task.
  */
-__STATIC_INLINE uint32_t nrf_wdt_task_address_get(nrf_wdt_task_t task);
+__STATIC_INLINE uintptr_t nrf_wdt_task_address_get(nrf_wdt_task_t task);
 
 /**
  * @brief Function for returning the address of a specific WDT event register.
@@ -226,7 +226,7 @@ __STATIC_INLINE uint32_t nrf_wdt_task_address_get(nrf_wdt_task_t task);
  *
  * @retval     address of requested event register
  */
-__STATIC_INLINE uint32_t nrf_wdt_event_address_get(nrf_wdt_event_t event);
+__STATIC_INLINE uintptr_t nrf_wdt_event_address_get(nrf_wdt_event_t event);
 
 /**
  * @brief Function for retrieving the watchdog status.
@@ -358,14 +358,14 @@ __STATIC_INLINE void nrf_wdt_publish_clear(nrf_wdt_event_t event)
 }
 #endif // defined(DPPI_PRESENT)
 
-__STATIC_INLINE uint32_t nrf_wdt_task_address_get(nrf_wdt_task_t task)
+__STATIC_INLINE uintptr_t nrf_wdt_task_address_get(nrf_wdt_task_t task)
 {
-    return ((uint32_t)NRF_WDT + task);
+    return ((uintptr_t)NRF_WDT + (uintptr_t)task);
 }
 
-__STATIC_INLINE uint32_t nrf_wdt_event_address_get(nrf_wdt_event_t event)
+__STATIC_INLINE uintptr_t nrf_wdt_event_address_get(nrf_wdt_event_t event)
 {
-    return ((uint32_t)NRF_WDT + event);
+    return ((uintptr_t)NRF_WDT + (uint32_t)event);
 }
 
 __STATIC_INLINE bool nrf_wdt_started(void)

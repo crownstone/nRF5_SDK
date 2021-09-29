@@ -460,9 +460,9 @@ typedef struct {
   * @brief SAADC_EVENTS_CH [EVENTS_CH] (Unspecified)
   */
 typedef struct {
-  __IOM uint32_t  LIMITH;                       /*!< (@ 0x00000000) Description cluster[0]: Last results is equal
+  __IOM uintptr_t  LIMITH;                       /*!< (@ 0x00000000) Description cluster[0]: Last results is equal
                                                                     or above CH[0].LIMIT.HIGH                                  */
-  __IOM uint32_t  LIMITL;                       /*!< (@ 0x00000004) Description cluster[0]: Last results is equal
+  __IOM uintptr_t  LIMITL;                       /*!< (@ 0x00000004) Description cluster[0]: Last results is equal
                                                                     or below CH[0].LIMIT.LOW                                   */
 } SAADC_EVENTS_CH_Type;                         /*!< Size = 8 (0x8)                                                            */
 
@@ -2352,7 +2352,7 @@ typedef struct {                                /*!< (@ 0x50000000) P0 Structure
 /** @addtogroup Device_Peripheral_declaration
   * @{
   */
-
+/*
 #define NRF_FICR                    ((NRF_FICR_Type*)          NRF_FICR_BASE)
 #define NRF_UICR                    ((NRF_UICR_Type*)          NRF_UICR_BASE)
 #define NRF_BPROT                   ((NRF_BPROT_Type*)         NRF_BPROT_BASE)
@@ -2418,6 +2418,142 @@ typedef struct {                                /*!< (@ 0x50000000) P0 Structure
 #define NRF_I2S                     ((NRF_I2S_Type*)           NRF_I2S_BASE)
 #define NRF_FPU                     ((NRF_FPU_Type*)           NRF_FPU_BASE)
 #define NRF_P0                      ((NRF_GPIO_Type*)          NRF_P0_BASE)
+*/
+
+extern NRF_FICR_Type         gNRF_FICR;
+extern NRF_UICR_Type         gNRF_UICR;
+extern NRF_APPROTECT_Type    gNRF_APPROTECT;
+extern NRF_BPROT_Type        gNRF_BPROT;
+extern NRF_POWER_Type        gNRF_POWER;
+extern NRF_CLOCK_Type        gNRF_CLOCK;
+extern NRF_RADIO_Type        gNRF_RADIO;
+extern NRF_UARTE_Type        gNRF_UARTE0;
+extern NRF_UART_Type         gNRF_UART0;
+extern NRF_SPIM_Type         gNRF_SPIM0;
+extern NRF_SPIS_Type         gNRF_SPIS0;
+extern NRF_TWIM_Type         gNRF_TWIM0;
+extern NRF_TWIS_Type         gNRF_TWIS0;
+extern NRF_SPI_Type          gNRF_SPI0;
+extern NRF_TWI_Type          gNRF_TWI0;
+extern NRF_SPIM_Type         gNRF_SPIM1;
+extern NRF_SPIS_Type         gNRF_SPIS1;
+extern NRF_TWIM_Type         gNRF_TWIM1;
+extern NRF_TWIS_Type         gNRF_TWIS1;
+extern NRF_SPI_Type          gNRF_SPI1;
+extern NRF_TWI_Type          gNRF_TWI1;
+extern NRF_NFCT_Type         gNRF_NFCT;
+extern NRF_GPIOTE_Type       gNRF_GPIOTE;
+extern NRF_SAADC_Type        gNRF_SAADC;
+extern NRF_TIMER_Type        gNRF_TIMER0;
+extern NRF_TIMER_Type        gNRF_TIMER1;
+extern NRF_TIMER_Type        gNRF_TIMER2;
+extern NRF_RTC_Type          gNRF_RTC0;
+extern NRF_TEMP_Type         gNRF_TEMP;
+extern NRF_RNG_Type          gNRF_RNG;
+extern NRF_ECB_Type          gNRF_ECB;
+extern NRF_CCM_Type          gNRF_CCM;
+extern NRF_AAR_Type          gNRF_AAR;
+extern NRF_WDT_Type          gNRF_WDT;
+extern NRF_RTC_Type          gNRF_RTC1;
+extern NRF_QDEC_Type         gNRF_QDEC;
+extern NRF_COMP_Type         gNRF_COMP;
+extern NRF_LPCOMP_Type       gNRF_LPCOMP;
+extern NRF_SWI_Type          gNRF_SWI0;
+extern NRF_EGU_Type          gNRF_EGU0;
+extern NRF_SWI_Type          gNRF_SWI1;
+extern NRF_EGU_Type          gNRF_EGU1;
+extern NRF_SWI_Type          gNRF_SWI2;
+extern NRF_EGU_Type          gNRF_EGU2;
+extern NRF_SWI_Type          gNRF_SWI3;
+extern NRF_EGU_Type          gNRF_EGU3;
+extern NRF_SWI_Type          gNRF_SWI4;
+extern NRF_EGU_Type          gNRF_EGU4;
+extern NRF_SWI_Type          gNRF_SWI5;
+extern NRF_EGU_Type          gNRF_EGU5;
+extern NRF_TIMER_Type        gNRF_TIMER3;
+extern NRF_TIMER_Type        gNRF_TIMER4;
+extern NRF_PWM_Type          gNRF_PWM0;
+extern NRF_PDM_Type          gNRF_PDM;
+extern NRF_NVMC_Type         gNRF_NVMC;
+extern NRF_PPI_Type          gNRF_PPI;
+extern NRF_MWU_Type          gNRF_MWU;
+extern NRF_PWM_Type          gNRF_PWM1;
+extern NRF_PWM_Type          gNRF_PWM2;
+extern NRF_SPIM_Type         gNRF_SPIM2;
+extern NRF_SPIS_Type         gNRF_SPIS2;
+extern NRF_SPI_Type          gNRF_SPI2;
+extern NRF_RTC_Type          gNRF_RTC2;
+extern NRF_I2S_Type          gNRF_I2S;
+extern NRF_FPU_Type          gNRF_FPU;
+extern NRF_GPIO_Type         gNRF_P0;
+
+
+extern NRF_FICR_Type*        NRF_FICR;
+extern NRF_UICR_Type*        NRF_UICR;
+extern NRF_APPROTECT_Type*   NRF_APPROTECT;
+extern NRF_BPROT_Type*       NRF_BPROT;
+extern NRF_POWER_Type*       NRF_POWER;
+extern NRF_CLOCK_Type*       NRF_CLOCK;
+extern NRF_RADIO_Type*       NRF_RADIO;
+extern NRF_UARTE_Type*       NRF_UARTE0;
+extern NRF_UART_Type*        NRF_UART0;
+extern NRF_SPIM_Type*        NRF_SPIM0;
+extern NRF_SPIS_Type*        NRF_SPIS0;
+extern NRF_TWIM_Type*        NRF_TWIM0;
+extern NRF_TWIS_Type*        NRF_TWIS0;
+extern NRF_SPI_Type*         NRF_SPI0;
+extern NRF_TWI_Type*         NRF_TWI0;
+extern NRF_SPIM_Type*        NRF_SPIM1;
+extern NRF_SPIS_Type*        NRF_SPIS1;
+extern NRF_TWIM_Type*        NRF_TWIM1;
+extern NRF_TWIS_Type*        NRF_TWIS1;
+extern NRF_SPI_Type*         NRF_SPI1;
+extern NRF_TWI_Type*         NRF_TWI1;
+extern NRF_NFCT_Type*        NRF_NFCT;
+extern NRF_GPIOTE_Type*      NRF_GPIOTE;
+extern NRF_SAADC_Type*       NRF_SAADC;
+extern NRF_TIMER_Type*       NRF_TIMER0;
+extern NRF_TIMER_Type*       NRF_TIMER1;
+extern NRF_TIMER_Type*       NRF_TIMER2;
+extern NRF_RTC_Type*         NRF_RTC0;
+extern NRF_TEMP_Type*        NRF_TEMP;
+extern NRF_RNG_Type*         NRF_RNG;
+extern NRF_ECB_Type*         NRF_ECB;
+extern NRF_CCM_Type*         NRF_CCM;
+extern NRF_AAR_Type*         NRF_AAR;
+extern NRF_WDT_Type*         NRF_WDT;
+extern NRF_RTC_Type*         NRF_RTC1;
+extern NRF_QDEC_Type*        NRF_QDEC;
+extern NRF_COMP_Type*        NRF_COMP;
+extern NRF_LPCOMP_Type*      NRF_LPCOMP;
+extern NRF_SWI_Type*         NRF_SWI0;
+extern NRF_EGU_Type*         NRF_EGU0;
+extern NRF_SWI_Type*         NRF_SWI1;
+extern NRF_EGU_Type*         NRF_EGU1;
+extern NRF_SWI_Type*         NRF_SWI2;
+extern NRF_EGU_Type*         NRF_EGU2;
+extern NRF_SWI_Type*         NRF_SWI3;
+extern NRF_EGU_Type*         NRF_EGU3;
+extern NRF_SWI_Type*         NRF_SWI4;
+extern NRF_EGU_Type*         NRF_EGU4;
+extern NRF_SWI_Type*         NRF_SWI5;
+extern NRF_EGU_Type*         NRF_EGU5;
+extern NRF_TIMER_Type*       NRF_TIMER3;
+extern NRF_TIMER_Type*       NRF_TIMER4;
+extern NRF_PWM_Type*         NRF_PWM0;
+extern NRF_PDM_Type*         NRF_PDM;
+extern NRF_NVMC_Type*        NRF_NVMC;
+extern NRF_PPI_Type*         NRF_PPI;
+extern NRF_MWU_Type*         NRF_MWU;
+extern NRF_PWM_Type*         NRF_PWM1;
+extern NRF_PWM_Type*         NRF_PWM2;
+extern NRF_SPIM_Type*        NRF_SPIM2;
+extern NRF_SPIS_Type*        NRF_SPIS2;
+extern NRF_SPI_Type*         NRF_SPI2;
+extern NRF_RTC_Type*         NRF_RTC2;
+extern NRF_I2S_Type*         NRF_I2S;
+extern NRF_FPU_Type*         NRF_FPU;
+extern NRF_GPIO_Type*        NRF_P0;
 
 /** @} */ /* End of group Device_Peripheral_declaration */
 

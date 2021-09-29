@@ -182,7 +182,7 @@ __STATIC_INLINE void nrf_gpiote_task_set(nrf_gpiote_tasks_t task);
  *
  * @returns Address.
  */
-__STATIC_INLINE uint32_t nrf_gpiote_task_addr_get(nrf_gpiote_tasks_t task);
+__STATIC_INLINE uintptr_t nrf_gpiote_task_addr_get(nrf_gpiote_tasks_t task);
 
 /**
  * @brief Function for getting the state of a specific GPIOTE event.
@@ -205,7 +205,7 @@ __STATIC_INLINE void nrf_gpiote_event_clear(nrf_gpiote_events_t event);
  *
  * @return Address
  */
-__STATIC_INLINE uint32_t nrf_gpiote_event_addr_get(nrf_gpiote_events_t event);
+__STATIC_INLINE uintptr_t nrf_gpiote_event_addr_get(nrf_gpiote_events_t event);
 
 /**@brief Function for enabling interrupts.
  *
@@ -351,12 +351,12 @@ __STATIC_INLINE bool nrf_gpiote_te_is_enabled(uint32_t idx);
 #ifndef SUPPRESS_INLINE_IMPLEMENTATION
 __STATIC_INLINE void nrf_gpiote_task_set(nrf_gpiote_tasks_t task)
 {
-    *(__IO uint32_t *)((uint32_t)NRF_GPIOTE + task) = 0x1UL;
+    *(__IO uintptr_t *)((uintptr_t)NRF_GPIOTE + task) = 0x1UL;
 }
 
-__STATIC_INLINE uint32_t nrf_gpiote_task_addr_get(nrf_gpiote_tasks_t task)
+__STATIC_INLINE uintptr_t nrf_gpiote_task_addr_get(nrf_gpiote_tasks_t task)
 {
-    return ((uint32_t)NRF_GPIOTE + task);
+    return ((uintptr_t)NRF_GPIOTE + task);
 }
 
 __STATIC_INLINE bool nrf_gpiote_event_is_set(nrf_gpiote_events_t event)
@@ -373,9 +373,9 @@ __STATIC_INLINE void nrf_gpiote_event_clear(nrf_gpiote_events_t event)
 #endif
 }
 
-__STATIC_INLINE uint32_t nrf_gpiote_event_addr_get(nrf_gpiote_events_t event)
+__STATIC_INLINE uintptr_t nrf_gpiote_event_addr_get(nrf_gpiote_events_t event)
 {
-    return ((uint32_t)NRF_GPIOTE + event);
+    return ((uintptr_t)NRF_GPIOTE + event);
 }
 
 __STATIC_INLINE void nrf_gpiote_int_enable(uint32_t mask)
