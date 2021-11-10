@@ -83,6 +83,11 @@ static __INLINE uint8_t next_index(uint8_t index)
     return (index < m_queue_size) ? (index + 1) : 0;
 }
 
+static __INLINE uint8_t prev_index(uint8_t index)
+{
+    return (index == 0) ? m_queue_size : (index - 1);
+}
+
 
 static __INLINE uint8_t app_sched_queue_full()
 {
@@ -160,10 +165,17 @@ uint16_t app_sched_queue_utilization_get(void)
 }
 #endif // APP_SCHEDULER_WITH_PROFILER
 
-
 uint32_t app_sched_event_put(void const              * p_event_data,
                              uint16_t                  event_data_size,
                              app_sched_event_handler_t handler)
+{
+    return app_sched_event_put_extra_args(p_event_data, event_data_size, handler, false);
+}
+
+uint32_t app_sched_event_put_extra_args(void const   * p_event_data,
+                             uint16_t                  event_data_size,
+                             app_sched_event_handler_t handler,
+                             bool                      no_repetitions)
 {
     uint32_t err_code;
 
@@ -175,8 +187,17 @@ uint32_t app_sched_event_put(void const              * p_event_data,
 
         if (!APP_SCHED_QUEUE_FULL())
         {
-            event_index       = m_queue_end_index;
-            m_queue_end_index = next_index(m_queue_end_index);
+            event_index = m_queue_end_index;
+            uint8_t prev_end_index = prev_index(m_queue_end_index);
+            if (no_repetitions
+                    && !app_sched_queue_empty()
+                    && prev_end_index != m_queue_start_index
+                    && m_queue_event_headers[prev_end_index].handler == handler) {
+                event_index = 0xFFFE;
+            }
+            else {
+                m_queue_end_index = next_index(m_queue_end_index);
+            }
 
         #if APP_SCHEDULER_WITH_PROFILER
             // This function call must be protected with critical region because
@@ -187,6 +208,9 @@ uint32_t app_sched_event_put(void const              * p_event_data,
 
         CRITICAL_REGION_EXIT();
 
+        if (event_index == 0xFFFE) {
+            return NRF_SUCCESS;
+        }
         if (event_index != 0xFFFF)
         {
             // NOTE: This can be done outside the critical region since the event consumer will

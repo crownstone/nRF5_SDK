@@ -164,6 +164,11 @@ uint32_t app_sched_event_put(void const *              p_event_data,
                              uint16_t                  event_size,
                              app_sched_event_handler_t handler);
 
+uint32_t app_sched_event_put_extra_args(void const *   p_event_data,
+                             uint16_t                  event_size,
+                             app_sched_event_handler_t handler,
+                             bool                      no_repetitions);
+
 /**@brief Function for getting the maximum observed queue utilization.
  *
  * Function for tuning the module and determining QUEUE_SIZE value and thus module RAM usage.

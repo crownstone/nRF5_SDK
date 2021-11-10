@@ -387,7 +387,7 @@ static void appsh_events_poll(void * p_event_data, uint16_t event_size)
 
 void SD_EVT_IRQHandler(void)
 {
-    ret_code_t ret_code = app_sched_event_put(NULL, 0, appsh_events_poll);
+    ret_code_t ret_code = app_sched_event_put_extra_args(NULL, 0, appsh_events_poll, true);
     APP_ERROR_CHECK(ret_code);
 }
 

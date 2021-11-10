@@ -693,6 +693,8 @@ ret_code_t fds_record_id_from_desc(fds_record_desc_t const * p_desc,
 ret_code_t fds_stat(fds_stat_t * p_stat);
 
 
+uint32_t fds_flash_end_addr(void);
+
 /** @} */
 
 

@@ -1626,7 +1626,7 @@ ret_code_t fds_register(fds_cb_t cb)
 }
 
 
-static uint32_t flash_end_addr(void)
+uint32_t fds_flash_end_addr(void)
 {
     uint32_t const bootloader_addr = BOOTLOADER_ADDRESS;
     uint32_t const page_sz         = NRF_FICR->CODEPAGESIZE;
@@ -1649,7 +1649,7 @@ static uint32_t flash_end_addr(void)
 static void flash_bounds_set(void)
 {
     uint32_t flash_size  = (FDS_PHY_PAGES * FDS_PHY_PAGE_SIZE * sizeof(uint32_t));
-    m_fs.end_addr   = flash_end_addr();
+    m_fs.end_addr   = fds_flash_end_addr();
     m_fs.start_addr = m_fs.end_addr - flash_size;
 }
 
