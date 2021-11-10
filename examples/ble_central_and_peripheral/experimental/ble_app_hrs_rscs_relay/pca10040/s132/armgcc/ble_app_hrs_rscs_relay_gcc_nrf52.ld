@@ -6,7 +6,7 @@ GROUP(-lgcc -lc -lnosys)
 MEMORY
 {
   FLASH (rx) : ORIGIN = 0x26000, LENGTH = 0x5a000
-  RAM (rwx) :  ORIGIN = 0x20002d58, LENGTH = 0xd2a8
+  RAM (rwx) :  ORIGIN = 0x20002da0, LENGTH = 0xd260
 }
 
 SECTIONS
@@ -69,6 +69,12 @@ SECTIONS
     KEEP(*(SORT(.sdh_ble_observers*)))
     PROVIDE(__stop_sdh_ble_observers = .);
   } > FLASH
+    .nrf_queue :
+  {
+    PROVIDE(__start_nrf_queue = .);
+    KEEP(*(.nrf_queue))
+    PROVIDE(__stop_nrf_queue = .);
+  } > FLASH
   .log_const_data :
   {
     PROVIDE(__start_log_const_data = .);
@@ -98,12 +104,6 @@ SECTIONS
     PROVIDE(__start_sdh_stack_observers = .);
     KEEP(*(SORT(.sdh_stack_observers*)))
     PROVIDE(__stop_sdh_stack_observers = .);
-  } > FLASH
-    .nrf_queue :
-  {
-    PROVIDE(__start_nrf_queue = .);
-    KEEP(*(.nrf_queue))
-    PROVIDE(__stop_nrf_queue = .);
   } > FLASH
     .cli_command :
   {

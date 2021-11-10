@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014 - 2019, Nordic Semiconductor ASA
+ * Copyright (c) 2014 - 2021, Nordic Semiconductor ASA
  *
  * All rights reserved.
  *
@@ -162,6 +162,9 @@ BLE_BPS_DEF(m_bps);                                                     /**< Str
 NRF_BLE_GATT_DEF(m_gatt);                                               /**< GATT module instance. */
 NRF_BLE_QWR_DEF(m_qwr);                                                 /**< Context for the Queued Write module.*/
 BLE_ADVERTISING_DEF(m_advertising);                                     /**< Advertising module instance. */
+NRF_BLE_GQ_DEF(m_ble_gatt_queue,                                        /**< BLE GATT Queue instance. */
+               NRF_SDH_BLE_PERIPHERAL_LINK_COUNT,
+               NRF_BLE_GQ_QUEUE_SIZE);
 
 static uint16_t             m_conn_handle = BLE_CONN_HANDLE_INVALID;    /**< Handle of the current connection. */
 static bps_meas_sim_value_t m_bps_meas_sim_val[NUM_SIM_MEAS_VALUES];    /**< Blood Pressure simulated measurements. */
@@ -197,6 +200,19 @@ void assert_nrf_callback(uint16_t line_num, const uint8_t * p_file_name)
 }
 
 
+/**@brief Function for handling Service errors.
+ *
+ * @details A pointer to this function will be passed to each service which may need to inform the
+ *          application about an error.
+ *
+ * @param[in] nrf_error  Error code containing information about what went wrong.
+ */
+static void service_error_handler(uint32_t nrf_error)
+{
+    APP_ERROR_HANDLER(nrf_error);
+}
+
+
 /**@brief Function for handling Peer Manager events.
  *
  * @param[in] p_evt  Peer Manager event.
@@ -207,6 +223,7 @@ static void pm_evt_handler(pm_evt_t const * p_evt)
     bool       is_indication_enabled;
 
     pm_handler_on_pm_evt(p_evt);
+    pm_handler_disconnect_on_sec_failure(p_evt);
     pm_handler_flash_clean(p_evt);
 
     switch (p_evt->evt_id)
@@ -480,9 +497,11 @@ static void services_init(void)
     // Initialize Blood Pressure Service.
     memset(&bps_init, 0, sizeof(bps_init));
 
-    bps_init.evt_handler = on_bps_evt;
-    bps_init.feature     = BLE_BPS_FEATURE_BODY_MOVEMENT_BIT |
-                           BLE_BPS_FEATURE_MEASUREMENT_POSITION_BIT;
+    bps_init.evt_handler   = on_bps_evt;
+    bps_init.error_handler = service_error_handler;
+    bps_init.p_gatt_queue  = &m_ble_gatt_queue;
+    bps_init.feature       = BLE_BPS_FEATURE_BODY_MOVEMENT_BIT |
+                             BLE_BPS_FEATURE_MEASUREMENT_POSITION_BIT;
 
     // Here the sec level for the Blood Pressure Service can be changed/increased.
     bps_init.bp_cccd_wr_sec    = SEC_JUST_WORKS;

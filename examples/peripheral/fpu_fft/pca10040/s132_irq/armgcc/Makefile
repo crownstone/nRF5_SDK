@@ -56,6 +56,7 @@ INC_FOLDERS += \
   $(SDK_ROOT)/components/libraries/balloc \
   $(SDK_ROOT)/components/libraries/ringbuf \
   $(SDK_ROOT)/modules/nrfx/hal \
+  $(SDK_ROOT)/components/toolchain/cmsis/dsp/Include \
   $(SDK_ROOT)/components/libraries/bsp \
   $(SDK_ROOT)/components/libraries/log \
   $(SDK_ROOT)/modules/nrfx \
@@ -93,7 +94,7 @@ CFLAGS += -DFPU_INTERRUPT_MODE
 CFLAGS += -DNRF52
 CFLAGS += -DNRF52832_XXAA
 CFLAGS += -DNRF52_PAN_74
-CFLAGS += -DNRF_SD_BLE_API_VERSION=6
+CFLAGS += -DNRF_SD_BLE_API_VERSION=7
 CFLAGS += -DS132
 CFLAGS += -DSOFTDEVICE_PRESENT
 CFLAGS += -mcpu=cortex-m4
@@ -106,7 +107,6 @@ CFLAGS += -fno-builtin -fshort-enums
 
 # C++ flags common to all targets
 CXXFLAGS += $(OPT)
-
 # Assembler flags common to all targets
 ASMFLAGS += -g3
 ASMFLAGS += -mcpu=cortex-m4
@@ -121,7 +121,7 @@ ASMFLAGS += -DFPU_INTERRUPT_MODE
 ASMFLAGS += -DNRF52
 ASMFLAGS += -DNRF52832_XXAA
 ASMFLAGS += -DNRF52_PAN_74
-ASMFLAGS += -DNRF_SD_BLE_API_VERSION=6
+ASMFLAGS += -DNRF_SD_BLE_API_VERSION=7
 ASMFLAGS += -DS132
 ASMFLAGS += -DSOFTDEVICE_PRESENT
 
@@ -175,8 +175,8 @@ flash: default
 
 # Flash softdevice
 flash_softdevice:
-	@echo Flashing: s132_nrf52_6.1.1_softdevice.hex
-	nrfjprog -f nrf52 --program $(SDK_ROOT)/components/softdevice/s132/hex/s132_nrf52_6.1.1_softdevice.hex --sectorerase
+	@echo Flashing: s132_nrf52_7.2.0_softdevice.hex
+	nrfjprog -f nrf52 --program $(SDK_ROOT)/components/softdevice/s132/hex/s132_nrf52_7.2.0_softdevice.hex --sectorerase
 	nrfjprog -f nrf52 --reset
 
 erase:

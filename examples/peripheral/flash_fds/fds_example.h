@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 - 2019, Nordic Semiconductor ASA
+ * Copyright (c) 2017 - 2021, Nordic Semiconductor ASA
  *
  * All rights reserved.
  *
@@ -45,7 +45,7 @@
 
 /* File ID and Key used for the configuration record. */
 
-#define CONFIG_FILE     (0xF010)
+#define CONFIG_FILE     (0x8010)
 #define CONFIG_REC_KEY  (0x7010)
 
 /* Colors used to print on the console. */

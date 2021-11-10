@@ -182,7 +182,7 @@
           <state>CONFIG_GPIO_AS_PINRESET</state>
           <state>FLOAT_ABI_HARD</state>
           <state>NRF52840_XXAA</state>
-          <state>NRF_SD_BLE_API_VERSION=6</state>
+          <state>NRF_SD_BLE_API_VERSION=7</state>
           <state>S140</state>
           <state>SOFTDEVICE_PRESENT</state>
         </option>
@@ -261,11 +261,11 @@
         </option>
         <option>
           <name>IExtraOptionsCheck</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IExtraOptions</name>
-          <state></state>
+          <state>--diag_suppress Pe111</state>
         </option>
         <option>
           <name>CCLangConformance</name>
@@ -330,6 +330,7 @@
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\softdevice\common</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\softdevice\s140\headers</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\softdevice\s140\headers\nrf52</state>
+          <state>$PROJ_DIR$\..\..\..\..\..\..\components\toolchain\cmsis\dsp\Include</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\toolchain\cmsis\include</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\external\fprintf</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\external\segger_rtt</state>
@@ -503,7 +504,7 @@
           <state>CONFIG_GPIO_AS_PINRESET</state>
           <state>FLOAT_ABI_HARD</state>
           <state>NRF52840_XXAA</state>
-          <state>NRF_SD_BLE_API_VERSION=6</state>
+          <state>NRF_SD_BLE_API_VERSION=7</state>
           <state>S140</state>
           <state>SOFTDEVICE_PRESENT</state>
         </option>
@@ -618,6 +619,7 @@
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\softdevice\common</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\softdevice\s140\headers</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\softdevice\s140\headers\nrf52</state>
+          <state>$PROJ_DIR$\..\..\..\..\..\..\components\toolchain\cmsis\dsp\Include</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\toolchain\cmsis\include</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\external\fprintf</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\external\segger_rtt</state>

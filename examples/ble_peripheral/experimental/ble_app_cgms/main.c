@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016 - 2019, Nordic Semiconductor ASA
+ * Copyright (c) 2016 - 2021, Nordic Semiconductor ASA
  *
  * All rights reserved.
  *
@@ -140,6 +140,9 @@ NRF_BLE_BMS_DEF(m_bms);                                                         
 NRF_BLE_GATT_DEF(m_gatt);                                                           /**< GATT module instance. */
 NRF_BLE_QWR_DEF(m_qwr);                                                             /**< Context for the Queued Write module. */
 BLE_ADVERTISING_DEF(m_advertising);                                                 /**< Advertising module instance. */
+NRF_BLE_GQ_DEF(m_ble_gatt_gueue,                                                    /**< BLE GATT Queue instance. */
+               NRF_SDH_BLE_PERIPHERAL_LINK_COUNT,
+               NRF_BLE_GQ_QUEUE_SIZE);
 
 static uint16_t     m_conn_handle = BLE_CONN_HANDLE_INVALID;                        /**< Handle of the current connection. */
 
@@ -674,6 +677,7 @@ static void services_init(void)
 
     cgms_init.evt_handler   = cgms_evt_handler;
     cgms_init.error_handler = service_error_handler;
+    cgms_init.p_gatt_queue  = &m_ble_gatt_gueue;
 
     cgms_init.initial_run_time = 20;
 
@@ -938,8 +942,6 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
             err_code = bsp_indication_set(BSP_INDICATE_CONNECTED);
             APP_ERROR_CHECK(err_code);
             m_conn_handle = p_ble_evt->evt.gap_evt.conn_handle;
-            err_code = nrf_ble_bms_set_conn_handle(&m_bms, m_conn_handle);
-            APP_ERROR_CHECK(err_code);
             err_code = nrf_ble_qwr_conn_handle_assign(&m_qwr, m_conn_handle);
             APP_ERROR_CHECK(err_code);
             err_code = nrf_ble_cgms_conn_handle_assign(&m_cgms, m_conn_handle);

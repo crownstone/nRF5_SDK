@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 - 2019, Nordic Semiconductor ASA
+ * Copyright (c) 2017 - 2021, Nordic Semiconductor ASA
  *
  * All rights reserved.
  *
@@ -69,12 +69,83 @@
 #define BLE_ADVERTISING_ENABLED 1
 #endif
 
-// <q> BLE_DTM_ENABLED  - ble_dtm - Module for testing RF/PHY using DTM commands
- 
-
+// <e> BLE_DTM_ENABLED - ble_dtm - Module for testing RF/PHY using DTM commands
+//==========================================================
 #ifndef BLE_DTM_ENABLED
 #define BLE_DTM_ENABLED 0
 #endif
+// <o> NRF_RADIO_ANTENNA_PIN_1 - Antenna 1 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_1
+#define NRF_RADIO_ANTENNA_PIN_1 21
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_2 - Antenna 2 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_2
+#define NRF_RADIO_ANTENNA_PIN_2 23
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_3 - Antenna 3 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_3
+#define NRF_RADIO_ANTENNA_PIN_3 26
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_4 - Antenna 4 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_4
+#define NRF_RADIO_ANTENNA_PIN_4 27
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_5 - Antenna 5 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_5
+#define NRF_RADIO_ANTENNA_PIN_5 28
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_6 - Antenna 6 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_6
+#define NRF_RADIO_ANTENNA_PIN_6 29
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_7 - Antenna 7 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_7
+#define NRF_RADIO_ANTENNA_PIN_7 30
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_8 - Antenna 8 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_8
+#define NRF_RADIO_ANTENNA_PIN_8 31
+#endif
+
+// <o> NRF_RADIO_ANTENNA_COUNT  
+#ifndef NRF_RADIO_ANTENNA_COUNT
+#define NRF_RADIO_ANTENNA_COUNT 12
+#endif
+
+// <o> DTM_RADIO_IRQ_PRIORITY - RADIO interrupt priority 
+#ifndef DTM_RADIO_IRQ_PRIORITY
+#define DTM_RADIO_IRQ_PRIORITY 2
+#endif
+
+// <o> DTM_TIMER_IRQ_PRIORITY - DTM timer interrupt priority 
+#ifndef DTM_TIMER_IRQ_PRIORITY
+#define DTM_TIMER_IRQ_PRIORITY 3
+#endif
+
+// <o> DTM_ANOMALY_172_TIMER_IRQ_PRIORITY - DTM anomaly 172 timer interrupt priority 
+#ifndef DTM_ANOMALY_172_TIMER_IRQ_PRIORITY
+#define DTM_ANOMALY_172_TIMER_IRQ_PRIORITY 2
+#endif
+
+// <o> NRF_DTM_TIMER_INSTANCE  - DTM TIMER instance
+ 
+// <0=> TIMER0 
+// <2=> TIMER2 
+// <3=> TIMER3 
+// <4=> TIMER4 
+
+#ifndef NRF_DTM_TIMER_INSTANCE
+#define NRF_DTM_TIMER_INSTANCE 0
+#endif
+
+// </e>
 
 // <q> BLE_RACP_ENABLED  - ble_racp - Record Access Control Point library
  
@@ -104,12 +175,19 @@
 
 // </e>
 
-// <q> NRF_BLE_GATT_ENABLED  - nrf_ble_gatt - GATT module
- 
-
+// <e> NRF_BLE_GATT_ENABLED - nrf_ble_gatt - GATT module
+//==========================================================
 #ifndef NRF_BLE_GATT_ENABLED
 #define NRF_BLE_GATT_ENABLED 1
 #endif
+// <q> NRF_BLE_GATT_MTU_EXCHANGE_INITIATION_ENABLED  - Enable GATT MTU exchange initiation
+ 
+
+#ifndef NRF_BLE_GATT_MTU_EXCHANGE_INITIATION_ENABLED
+#define NRF_BLE_GATT_MTU_EXCHANGE_INITIATION_ENABLED 1
+#endif
+
+// </e>
 
 // <e> NRF_BLE_QWR_ENABLED - nrf_ble_qwr - Queued writes support module (prepare/execute write)
 //==========================================================
@@ -2332,6 +2410,79 @@
 
 #ifndef NRFX_LPCOMP_CONFIG_DEBUG_COLOR
 #define NRFX_LPCOMP_CONFIG_DEBUG_COLOR 0
+#endif
+
+// </e>
+
+// </e>
+
+// <e> NRFX_NFCT_ENABLED - nrfx_nfct - NFCT peripheral driver
+//==========================================================
+#ifndef NRFX_NFCT_ENABLED
+#define NRFX_NFCT_ENABLED 0
+#endif
+// <o> NRFX_NFCT_CONFIG_IRQ_PRIORITY  - Interrupt priority
+ 
+// <0=> 0 (highest) 
+// <1=> 1 
+// <2=> 2 
+// <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
+
+#ifndef NRFX_NFCT_CONFIG_IRQ_PRIORITY
+#define NRFX_NFCT_CONFIG_IRQ_PRIORITY 6
+#endif
+
+// <e> NRFX_NFCT_CONFIG_LOG_ENABLED - Enables logging in the module.
+//==========================================================
+#ifndef NRFX_NFCT_CONFIG_LOG_ENABLED
+#define NRFX_NFCT_CONFIG_LOG_ENABLED 0
+#endif
+// <o> NRFX_NFCT_CONFIG_LOG_LEVEL  - Default Severity level
+ 
+// <0=> Off 
+// <1=> Error 
+// <2=> Warning 
+// <3=> Info 
+// <4=> Debug 
+
+#ifndef NRFX_NFCT_CONFIG_LOG_LEVEL
+#define NRFX_NFCT_CONFIG_LOG_LEVEL 3
+#endif
+
+// <o> NRFX_NFCT_CONFIG_INFO_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef NRFX_NFCT_CONFIG_INFO_COLOR
+#define NRFX_NFCT_CONFIG_INFO_COLOR 0
+#endif
+
+// <o> NRFX_NFCT_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef NRFX_NFCT_CONFIG_DEBUG_COLOR
+#define NRFX_NFCT_CONFIG_DEBUG_COLOR 0
 #endif
 
 // </e>
@@ -4619,6 +4770,17 @@
 #define NRFX_USBD_CONFIG_ISO_IN_ZLP 0
 #endif
 
+// <q> NRFX_USBD_USE_WORKAROUND_FOR_ANOMALY_211  - Use workaround for anomaly 211
+ 
+
+// <i> If set, workaround for anomaly 211 will be enabled.
+// <i> Anomaly 211 - Device remains in SUSPEND too long when host resumes
+// <i> bus activity (sending SOF packets) without a RESUME condition.
+
+#ifndef NRFX_USBD_USE_WORKAROUND_FOR_ANOMALY_211
+#define NRFX_USBD_USE_WORKAROUND_FOR_ANOMALY_211 0
+#endif
+
 // </e>
 
 // <e> NRFX_WDT_ENABLED - nrfx_wdt - WDT peripheral driver
@@ -4637,7 +4799,7 @@
 #define NRFX_WDT_CONFIG_BEHAVIOUR 1
 #endif
 
-// <o> NRFX_WDT_CONFIG_RELOAD_VALUE - Reload value  <15-4294967295> 
+// <o> NRFX_WDT_CONFIG_RELOAD_VALUE - Reload value in ms  <1-131072000> 
 
 
 #ifndef NRFX_WDT_CONFIG_RELOAD_VALUE
@@ -5954,6 +6116,7 @@
 
 // <i> If set, ISO IN endpoint will respond to an IN token with ZLP when no data is ready to be sent.
 // <i> Else, there will be no response.
+// <i> NOTE: This option does not work on Engineering A chip.
 
 #ifndef USBD_CONFIG_ISO_IN_ZLP
 #define USBD_CONFIG_ISO_IN_ZLP 0
@@ -6124,7 +6287,7 @@
 // <31=> 1024 Hz 
 
 #ifndef APP_TIMER_CONFIG_RTC_FREQUENCY
-#define APP_TIMER_CONFIG_RTC_FREQUENCY 0
+#define APP_TIMER_CONFIG_RTC_FREQUENCY 1
 #endif
 
 // <o> APP_TIMER_CONFIG_IRQ_PRIORITY  - Interrupt priority
@@ -6247,22 +6410,31 @@
 #define APP_USBD_PID 0x521A
 #endif
 
-// <o> APP_USBD_DEVICE_VER_MAJOR - Device version, major part.  <0-99> 
+// <o> APP_USBD_DEVICE_VER_MAJOR - Major device version  <0-99> 
 
 
-// <i> Device version, will be converted automatically to BCD notation. Use just decimal values.
+// <i> Major device version, will be converted automatically to BCD notation. Use just decimal values.
 
 #ifndef APP_USBD_DEVICE_VER_MAJOR
 #define APP_USBD_DEVICE_VER_MAJOR 1
 #endif
 
-// <o> APP_USBD_DEVICE_VER_MINOR - Device version, minor part.  <0-99> 
+// <o> APP_USBD_DEVICE_VER_MINOR - Minor device version  <0-9> 
 
 
-// <i> Device version, will be converted automatically to BCD notation. Use just decimal values.
+// <i> Minor device version, will be converted automatically to BCD notation. Use just decimal values.
 
 #ifndef APP_USBD_DEVICE_VER_MINOR
 #define APP_USBD_DEVICE_VER_MINOR 0
+#endif
+
+// <o> APP_USBD_DEVICE_VER_SUB - Sub-minor device version  <0-9> 
+
+
+// <i> Sub-minor device version, will be converted automatically to BCD notation. Use just decimal values.
+
+#ifndef APP_USBD_DEVICE_VER_SUB
+#define APP_USBD_DEVICE_VER_SUB 0
 #endif
 
 // <q> APP_USBD_CONFIG_SELF_POWERED  - Self-powered device, as opposed to bus-powered.
@@ -7304,7 +7476,7 @@
  
 
 #ifndef NRF_SORTLIST_ENABLED
-#define NRF_SORTLIST_ENABLED 0
+#define NRF_SORTLIST_ENABLED 1
 #endif
 
 // <q> NRF_SPI_MNGR_ENABLED  - nrf_spi_mngr - SPI transaction manager
@@ -7547,6 +7719,13 @@
 #define NRF_FPRINTF_FLAG_AUTOMATIC_CR_ON_LF_ENABLED 1
 #endif
 
+// <q> NRF_FPRINTF_DOUBLE_ENABLED  - Enable IEEE-754 double precision formatting.
+ 
+
+#ifndef NRF_FPRINTF_DOUBLE_ENABLED
+#define NRF_FPRINTF_DOUBLE_ENABLED 0
+#endif
+
 // </h> 
 //==========================================================
 
@@ -7726,6 +7905,17 @@
 
 #ifndef NRF_LOG_FILTERS_ENABLED
 #define NRF_LOG_FILTERS_ENABLED 0
+#endif
+
+// <q> NRF_LOG_NON_DEFFERED_CRITICAL_REGION_ENABLED  - Enable use of critical region for non deffered mode when flushing logs.
+ 
+
+// <i> When enabled NRF_LOG_FLUSH is called from critical section when non deffered mode is used.
+// <i> Log output will never be corrupted as access to the log backend is exclusive
+// <i> but system will spend significant amount of time in critical section
+
+#ifndef NRF_LOG_NON_DEFFERED_CRITICAL_REGION_ENABLED
+#define NRF_LOG_NON_DEFFERED_CRITICAL_REGION_ENABLED 0
 #endif
 
 // <o> NRF_LOG_STR_PUSH_BUFFER_SIZE  - Size of the buffer dedicated for strings stored using @ref NRF_LOG_PUSH.
@@ -9074,6 +9264,73 @@
 // <h> nrf_log in nRF_Libraries 
 
 //==========================================================
+// <e> APP_BUTTON_CONFIG_LOG_ENABLED - Enables logging in the module.
+//==========================================================
+#ifndef APP_BUTTON_CONFIG_LOG_ENABLED
+#define APP_BUTTON_CONFIG_LOG_ENABLED 0
+#endif
+// <o> APP_BUTTON_CONFIG_LOG_LEVEL  - Default Severity level
+ 
+// <0=> Off 
+// <1=> Error 
+// <2=> Warning 
+// <3=> Info 
+// <4=> Debug 
+
+#ifndef APP_BUTTON_CONFIG_LOG_LEVEL
+#define APP_BUTTON_CONFIG_LOG_LEVEL 3
+#endif
+
+// <o> APP_BUTTON_CONFIG_INITIAL_LOG_LEVEL  - Initial severity level if dynamic filtering is enabled.
+ 
+
+// <i> If module generates a lot of logs, initial log level can
+// <i> be decreased to prevent flooding. Severity level can be
+// <i> increased on instance basis.
+// <0=> Off 
+// <1=> Error 
+// <2=> Warning 
+// <3=> Info 
+// <4=> Debug 
+
+#ifndef APP_BUTTON_CONFIG_INITIAL_LOG_LEVEL
+#define APP_BUTTON_CONFIG_INITIAL_LOG_LEVEL 3
+#endif
+
+// <o> APP_BUTTON_CONFIG_INFO_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef APP_BUTTON_CONFIG_INFO_COLOR
+#define APP_BUTTON_CONFIG_INFO_COLOR 0
+#endif
+
+// <o> APP_BUTTON_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef APP_BUTTON_CONFIG_DEBUG_COLOR
+#define APP_BUTTON_CONFIG_DEBUG_COLOR 0
+#endif
+
+// </e>
+
 // <e> APP_TIMER_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
 #ifndef APP_TIMER_CONFIG_LOG_ENABLED
@@ -10875,6 +11132,64 @@
 #define NFC_NDEF_URI_REC_ENABLED 0
 #endif
 
+// <e> NFC_PLATFORM_ENABLED - nfc_platform - NFC platform module for Clock control.
+//==========================================================
+#ifndef NFC_PLATFORM_ENABLED
+#define NFC_PLATFORM_ENABLED 0
+#endif
+// <e> NFC_PLATFORM_LOG_ENABLED - Enables logging in the module.
+//==========================================================
+#ifndef NFC_PLATFORM_LOG_ENABLED
+#define NFC_PLATFORM_LOG_ENABLED 0
+#endif
+// <o> NFC_PLATFORM_LOG_LEVEL  - Default Severity level
+ 
+// <0=> Off 
+// <1=> Error 
+// <2=> Warning 
+// <3=> Info 
+// <4=> Debug 
+
+#ifndef NFC_PLATFORM_LOG_LEVEL
+#define NFC_PLATFORM_LOG_LEVEL 3
+#endif
+
+// <o> NFC_PLATFORM_INFO_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef NFC_PLATFORM_INFO_COLOR
+#define NFC_PLATFORM_INFO_COLOR 0
+#endif
+
+// <o> NFC_PLATFORM_DEBUG_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef NFC_PLATFORM_DEBUG_COLOR
+#define NFC_PLATFORM_DEBUG_COLOR 0
+#endif
+
+// </e>
+
+// </e>
+
 // <e> NFC_T2T_PARSER_ENABLED - nfc_type_2_tag_parser - Parser for decoding Type 2 Tag data
 //==========================================================
 #ifndef NFC_T2T_PARSER_ENABLED
@@ -11562,48 +11877,6 @@
 #define NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO 1
 #endif
 
-// <o> NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO  
-// <i> Priority with which BLE events are dispatched to the NFC pairing library.
-
-#ifndef NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO
-#define NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO 1
-#endif
-
-// <o> NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO  
-// <i> Priority with which BLE events are dispatched to the NFC pairing library.
-
-#ifndef NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO
-#define NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO 1
-#endif
-
-// <o> NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO  
-// <i> Priority with which BLE events are dispatched to the NFC pairing library.
-
-#ifndef NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO
-#define NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO 1
-#endif
-
-// <o> NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO  
-// <i> Priority with which BLE events are dispatched to the NFC pairing library.
-
-#ifndef NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO
-#define NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO 1
-#endif
-
-// <o> NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO  
-// <i> Priority with which BLE events are dispatched to the NFC pairing library.
-
-#ifndef NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO
-#define NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO 1
-#endif
-
-// <o> NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO  
-// <i> Priority with which BLE events are dispatched to the NFC pairing library.
-
-#ifndef NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO
-#define NFC_BLE_PAIR_LIB_BLE_OBSERVER_PRIO 1
-#endif
-
 // <o> NRF_BLE_BMS_BLE_OBSERVER_PRIO  
 // <i> Priority with which BLE events are dispatched to the Bond Management Service.
 
@@ -11637,6 +11910,13 @@
 
 #ifndef NRF_BLE_GATT_BLE_OBSERVER_PRIO
 #define NRF_BLE_GATT_BLE_OBSERVER_PRIO 1
+#endif
+
+// <o> NRF_BLE_GQ_BLE_OBSERVER_PRIO  
+// <i> Priority with which BLE events are dispatched to the GATT Queue module.
+
+#ifndef NRF_BLE_GQ_BLE_OBSERVER_PRIO
+#define NRF_BLE_GQ_BLE_OBSERVER_PRIO 1
 #endif
 
 // <o> NRF_BLE_QWR_BLE_OBSERVER_PRIO  
@@ -11854,13 +12134,6 @@
 // <h> SoC Observers priorities - Invididual priorities
 
 //==========================================================
-// <o> BLE_ADV_SOC_OBSERVER_PRIO  
-// <i> Priority with which SoC events are dispatched to the Advertising module.
-
-#ifndef BLE_ADV_SOC_OBSERVER_PRIO
-#define BLE_ADV_SOC_OBSERVER_PRIO 1
-#endif
-
 // <o> BLE_DFU_SOC_OBSERVER_PRIO  
 // <i> Priority with which BLE events are dispatched to the DFU Service.
 

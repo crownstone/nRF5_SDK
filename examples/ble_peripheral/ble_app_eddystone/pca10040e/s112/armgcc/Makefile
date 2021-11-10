@@ -16,12 +16,13 @@ SRC_FILES += \
   $(SDK_ROOT)/components/libraries/util/app_error_handler_gcc.c \
   $(SDK_ROOT)/components/libraries/util/app_error_weak.c \
   $(SDK_ROOT)/components/libraries/scheduler/app_scheduler.c \
-  $(SDK_ROOT)/components/libraries/timer/app_timer.c \
+  $(SDK_ROOT)/components/libraries/timer/app_timer2.c \
   $(SDK_ROOT)/components/libraries/util/app_util_platform.c \
   $(SDK_ROOT)/external/cifra_AES128-EAX/blockwise.c \
   $(SDK_ROOT)/external/cifra_AES128-EAX/cifra_cmac.c \
   $(SDK_ROOT)/external/cifra_AES128-EAX/cifra_eax_aes.c \
   $(SDK_ROOT)/components/libraries/crc16/crc16.c \
+  $(SDK_ROOT)/components/libraries/timer/drv_rtc.c \
   $(SDK_ROOT)/external/cifra_AES128-EAX/eax.c \
   $(SDK_ROOT)/components/ble/ble_services/eddystone/es_adv.c \
   $(SDK_ROOT)/components/ble/ble_services/eddystone/es_adv_frame.c \
@@ -58,6 +59,7 @@ SRC_FILES += \
   $(SDK_ROOT)/components/libraries/queue/nrf_queue.c \
   $(SDK_ROOT)/components/libraries/ringbuf/nrf_ringbuf.c \
   $(SDK_ROOT)/components/libraries/experimental_section_vars/nrf_section_iter.c \
+  $(SDK_ROOT)/components/libraries/sortlist/nrf_sortlist.c \
   $(SDK_ROOT)/components/libraries/strerror/nrf_strerror.c \
   $(SDK_ROOT)/components/libraries/sensorsim/sensorsim.c \
   $(SDK_ROOT)/components/libraries/crypto/backend/micro_ecc/micro_ecc_backend_ecc.c \
@@ -103,14 +105,17 @@ SRC_FILES += \
   $(SDK_ROOT)/external/mbedtls/library/aes.c \
   $(SDK_ROOT)/external/mbedtls/library/aesni.c \
   $(SDK_ROOT)/external/mbedtls/library/arc4.c \
+  $(SDK_ROOT)/external/mbedtls/library/aria.c \
   $(SDK_ROOT)/external/mbedtls/library/asn1parse.c \
-  $(SDK_ROOT)/external/nrf_tls/mbedtls/replacements/asn1write.c \
+  $(SDK_ROOT)/external/mbedtls/library/asn1write.c \
   $(SDK_ROOT)/external/mbedtls/library/base64.c \
   $(SDK_ROOT)/external/mbedtls/library/bignum.c \
   $(SDK_ROOT)/external/mbedtls/library/blowfish.c \
   $(SDK_ROOT)/external/mbedtls/library/camellia.c \
   $(SDK_ROOT)/external/mbedtls/library/ccm.c \
   $(SDK_ROOT)/external/mbedtls/library/certs.c \
+  $(SDK_ROOT)/external/mbedtls/library/chacha20.c \
+  $(SDK_ROOT)/external/mbedtls/library/chachapoly.c \
   $(SDK_ROOT)/external/mbedtls/library/cipher.c \
   $(SDK_ROOT)/external/mbedtls/library/cipher_wrap.c \
   $(SDK_ROOT)/external/mbedtls/library/cmac.c \
@@ -120,6 +125,7 @@ SRC_FILES += \
   $(SDK_ROOT)/external/mbedtls/library/dhm.c \
   $(SDK_ROOT)/external/mbedtls/library/ecdh.c \
   $(SDK_ROOT)/external/mbedtls/library/ecdsa.c \
+  $(SDK_ROOT)/external/mbedtls/library/ecjpake.c \
   $(SDK_ROOT)/external/mbedtls/library/ecp.c \
   $(SDK_ROOT)/external/mbedtls/library/ecp_curves.c \
   $(SDK_ROOT)/external/mbedtls/library/entropy.c \
@@ -134,6 +140,8 @@ SRC_FILES += \
   $(SDK_ROOT)/external/mbedtls/library/md5.c \
   $(SDK_ROOT)/external/mbedtls/library/md_wrap.c \
   $(SDK_ROOT)/external/mbedtls/library/memory_buffer_alloc.c \
+  $(SDK_ROOT)/external/mbedtls/library/net_sockets.c \
+  $(SDK_ROOT)/external/mbedtls/library/nist_kw.c \
   $(SDK_ROOT)/external/mbedtls/library/oid.c \
   $(SDK_ROOT)/external/mbedtls/library/padlock.c \
   $(SDK_ROOT)/external/mbedtls/library/pem.c \
@@ -145,8 +153,11 @@ SRC_FILES += \
   $(SDK_ROOT)/external/mbedtls/library/pkparse.c \
   $(SDK_ROOT)/external/mbedtls/library/pkwrite.c \
   $(SDK_ROOT)/external/mbedtls/library/platform.c \
+  $(SDK_ROOT)/external/mbedtls/library/platform_util.c \
+  $(SDK_ROOT)/external/mbedtls/library/poly1305.c \
   $(SDK_ROOT)/external/mbedtls/library/ripemd160.c \
   $(SDK_ROOT)/external/mbedtls/library/rsa.c \
+  $(SDK_ROOT)/external/mbedtls/library/rsa_internal.c \
   $(SDK_ROOT)/external/mbedtls/library/sha1.c \
   $(SDK_ROOT)/external/mbedtls/library/sha256.c \
   $(SDK_ROOT)/external/mbedtls/library/sha512.c \
@@ -154,7 +165,7 @@ SRC_FILES += \
   $(SDK_ROOT)/external/mbedtls/library/ssl_ciphersuites.c \
   $(SDK_ROOT)/external/mbedtls/library/ssl_cli.c \
   $(SDK_ROOT)/external/mbedtls/library/ssl_cookie.c \
-  $(SDK_ROOT)/external/nrf_tls/mbedtls/replacements/ssl_srv.c \
+  $(SDK_ROOT)/external/mbedtls/library/ssl_srv.c \
   $(SDK_ROOT)/external/mbedtls/library/ssl_ticket.c \
   $(SDK_ROOT)/external/mbedtls/library/ssl_tls.c \
   $(SDK_ROOT)/external/mbedtls/library/threading.c \
@@ -165,6 +176,8 @@ SRC_FILES += \
   $(SDK_ROOT)/external/mbedtls/library/x509_crl.c \
   $(SDK_ROOT)/external/mbedtls/library/x509_crt.c \
   $(SDK_ROOT)/external/mbedtls/library/x509_csr.c \
+  $(SDK_ROOT)/external/mbedtls/library/x509write_crt.c \
+  $(SDK_ROOT)/external/mbedtls/library/x509write_csr.c \
   $(SDK_ROOT)/external/mbedtls/library/xtea.c \
   $(SDK_ROOT)/components/ble/ble_services/ble_escs/nrf_ble_escs.c \
   $(SDK_ROOT)/components/softdevice/common/nrf_sdh.c \
@@ -328,9 +341,9 @@ INC_FOLDERS += \
 
 # Libraries common to all targets
 LIB_FILES += \
-  $(SDK_ROOT)/external/nrf_cc310/lib/cortex-m4/hard-float/libnrf_cc310_0.9.12.a \
+  $(SDK_ROOT)/external/nrf_cc310/lib/cortex-m4/hard-float/libnrf_cc310_0.9.13.a \
   $(SDK_ROOT)/external/micro-ecc/nrf52nf_armgcc/armgcc/micro_ecc_lib_nrf52.a \
-  $(SDK_ROOT)/external/nrf_oberon/lib/cortex-m4/soft-float/liboberon_2.0.7.a \
+  $(SDK_ROOT)/external/nrf_oberon/lib/cortex-m4/soft-float/liboberon_3.0.8.a \
 
 # Optimization flags
 OPT = -Os -g3
@@ -339,6 +352,8 @@ OPT = -Os -g3
 
 # C flags common to all targets
 CFLAGS += $(OPT)
+CFLAGS += -DAPP_TIMER_V2
+CFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
 CFLAGS += -DBOARD_PCA10040
 CFLAGS += -DCONFIG_GPIO_AS_PINRESET
 CFLAGS += -DDEVELOP_IN_NRF52832
@@ -348,10 +363,9 @@ CFLAGS += -DNRF52810_XXAA
 CFLAGS += -DNRF52_PAN_74
 CFLAGS += -DNRFX_COREDEP_DELAY_US_LOOP_CYCLES=3
 CFLAGS += -DNRF_CRYPTO_MAX_INSTANCE_COUNT=1
-CFLAGS += -DNRF_SD_BLE_API_VERSION=6
+CFLAGS += -DNRF_SD_BLE_API_VERSION=7
 CFLAGS += -DS112
 CFLAGS += -DSOFTDEVICE_PRESENT
-CFLAGS += -DSWI_DISABLE0
 CFLAGS += -DuECC_ENABLE_VLI_API=0
 CFLAGS += -DuECC_OPTIMIZATION_LEVEL=3
 CFLAGS += -DuECC_SQUARE_FUNC=0
@@ -367,12 +381,13 @@ CFLAGS += -fno-builtin -fshort-enums
 
 # C++ flags common to all targets
 CXXFLAGS += $(OPT)
-
 # Assembler flags common to all targets
 ASMFLAGS += -g3
 ASMFLAGS += -mcpu=cortex-m4
 ASMFLAGS += -mthumb -mabi=aapcs
 ASMFLAGS += -mfloat-abi=soft
+ASMFLAGS += -DAPP_TIMER_V2
+ASMFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
 ASMFLAGS += -DBOARD_PCA10040
 ASMFLAGS += -DCONFIG_GPIO_AS_PINRESET
 ASMFLAGS += -DDEVELOP_IN_NRF52832
@@ -381,10 +396,9 @@ ASMFLAGS += -DNRF52810_XXAA
 ASMFLAGS += -DNRF52_PAN_74
 ASMFLAGS += -DNRFX_COREDEP_DELAY_US_LOOP_CYCLES=3
 ASMFLAGS += -DNRF_CRYPTO_MAX_INSTANCE_COUNT=1
-ASMFLAGS += -DNRF_SD_BLE_API_VERSION=6
+ASMFLAGS += -DNRF_SD_BLE_API_VERSION=7
 ASMFLAGS += -DS112
 ASMFLAGS += -DSOFTDEVICE_PRESENT
-ASMFLAGS += -DSWI_DISABLE0
 ASMFLAGS += -DuECC_ENABLE_VLI_API=0
 ASMFLAGS += -DuECC_OPTIMIZATION_LEVEL=3
 ASMFLAGS += -DuECC_SQUARE_FUNC=0
@@ -440,8 +454,8 @@ flash: default
 
 # Flash softdevice
 flash_softdevice:
-	@echo Flashing: s112_nrf52_6.1.1_softdevice.hex
-	nrfjprog -f nrf52 --program $(SDK_ROOT)/components/softdevice/s112/hex/s112_nrf52_6.1.1_softdevice.hex --sectorerase
+	@echo Flashing: s112_nrf52_7.2.0_softdevice.hex
+	nrfjprog -f nrf52 --program $(SDK_ROOT)/components/softdevice/s112/hex/s112_nrf52_7.2.0_softdevice.hex --sectorerase
 	nrfjprog -f nrf52 --reset
 
 erase:

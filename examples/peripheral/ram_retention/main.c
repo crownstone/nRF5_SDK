@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014 - 2019, Nordic Semiconductor ASA
+ * Copyright (c) 2014 - 2021, Nordic Semiconductor ASA
  *
  * All rights reserved.
  *
@@ -182,7 +182,7 @@ int main(void)
     NRF_POWER->RAMON |= (POWER_RAMON_OFFRAM0_RAM0On << POWER_RAMON_OFFRAM0_Pos) |
                         (POWER_RAMON_OFFRAM1_RAM1On << POWER_RAMON_OFFRAM1_Pos);
 
-#elif defined(NRF52840_XXAA)
+#elif defined(NRF52840_XXAA) || defined(NRF52833_XXAA)
     NRF_POWER->RAM[0].POWERSET = (POWER_RAM_POWER_S0POWER_On << POWER_RAM_POWER_S0POWER_Pos)      |
                             (POWER_RAM_POWER_S1POWER_On      << POWER_RAM_POWER_S1POWER_Pos)      |
                             (POWER_RAM_POWER_S2POWER_On      << POWER_RAM_POWER_S2POWER_Pos)      |

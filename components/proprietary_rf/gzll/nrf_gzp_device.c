@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009 - 2019, Nordic Semiconductor ASA
+ * Copyright (c) 2009 - 2021, Nordic Semiconductor ASA
  *
  * All rights reserved.
  *
@@ -304,6 +304,8 @@ static bool tx_success;  ///< Flag to indicate whether a GZLL TX attempt was suc
   #else
     #error
   #endif
+#elif defined(__GNUC__)
+static const uint32_t database[GZP_DEVICE_PARAMS_STORAGE_SIZE / 4] __attribute__((section(".gzll_paring")))
 #else
 static const uint32_t database[GZP_DEVICE_PARAMS_STORAGE_SIZE / 4] __attribute__((at(GZP_PARAMS_DB_ADR)))
 #endif

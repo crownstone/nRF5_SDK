@@ -176,16 +176,17 @@
         </option>
         <option>
           <name>CCDefines</name>
+          <state>APP_TIMER_V2</state>
+          <state>APP_TIMER_V2_RTC1_ENABLED</state>
           <state>BOARD_PCA10056</state>
           <state>CONFIG_GPIO_AS_PINRESET</state>
           <state>FLOAT_ABI_HARD</state>
           <state>MBEDTLS_CONFIG_FILE=&lt;nrf_crypto_mbedtls_config.h&gt;</state>
           <state>NRF52840_XXAA</state>
           <state>NRF_CRYPTO_MAX_INSTANCE_COUNT=1</state>
-          <state>NRF_SD_BLE_API_VERSION=6</state>
+          <state>NRF_SD_BLE_API_VERSION=7</state>
           <state>S140</state>
           <state>SOFTDEVICE_PRESENT</state>
-          <state>SWI_DISABLE0</state>
           <state>uECC_ENABLE_VLI_API=0</state>
           <state>uECC_OPTIMIZATION_LEVEL=3</state>
           <state>uECC_SQUARE_FUNC=0</state>
@@ -267,11 +268,11 @@
         </option>
         <option>
           <name>IExtraOptionsCheck</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IExtraOptions</name>
-          <state></state>
+          <state>--diag_suppress Pe111 --diag_suppress Pe188</state>
         </option>
         <option>
           <name>CCLangConformance</name>
@@ -440,6 +441,7 @@
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\ndef\parser\record</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\ndef\text</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\ndef\uri</state>
+          <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\platform</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\t2t_lib</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\t2t_parser</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\t4t_lib</state>
@@ -626,16 +628,17 @@
         </option>
         <option>
       <name>ADefines</name>
+          <state>APP_TIMER_V2</state>
+          <state>APP_TIMER_V2_RTC1_ENABLED</state>
           <state>BOARD_PCA10056</state>
           <state>CONFIG_GPIO_AS_PINRESET</state>
           <state>FLOAT_ABI_HARD</state>
           <state>MBEDTLS_CONFIG_FILE=&lt;nrf_crypto_mbedtls_config.h&gt;</state>
           <state>NRF52840_XXAA</state>
           <state>NRF_CRYPTO_MAX_INSTANCE_COUNT=1</state>
-          <state>NRF_SD_BLE_API_VERSION=6</state>
+          <state>NRF_SD_BLE_API_VERSION=7</state>
           <state>S140</state>
           <state>SOFTDEVICE_PRESENT</state>
-          <state>SWI_DISABLE0</state>
           <state>uECC_ENABLE_VLI_API=0</state>
           <state>uECC_OPTIMIZATION_LEVEL=3</state>
           <state>uECC_SQUARE_FUNC=0</state>
@@ -857,6 +860,7 @@
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\ndef\parser\record</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\ndef\text</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\ndef\uri</state>
+          <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\platform</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\t2t_lib</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\t2t_parser</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\components\nfc\t4t_lib</state>
@@ -1270,19 +1274,20 @@
     </settings>
   </configuration>  <group>
   <name>nrf_cc310</name>    <file>
-    <name>$PROJ_DIR$\..\..\..\..\..\..\external\nrf_cc310\lib\cortex-m4\hard-float\short-wchar\libnrf_cc310_0.9.12.a</name>    </file>  </group>  <group>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\nrf_cc310\lib\cortex-m4\hard-float\short-wchar\libnrf_cc310_0.9.13.a</name>    </file>  </group>  <group>
   <name>nRF_Libraries</name>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\button\app_button.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\util\app_error.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\util\app_error_handler_iar.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\util\app_error_weak.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\scheduler\app_scheduler.c</name>    </file>    <file>
-    <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\timer\app_timer.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\timer\app_timer2.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\util\app_util_platform.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\cifra_AES128-EAX\blockwise.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\cifra_AES128-EAX\cifra_cmac.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\cifra_AES128-EAX\cifra_eax_aes.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\crc16\crc16.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\timer\drv_rtc.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\cifra_AES128-EAX\eax.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\ble\ble_services\eddystone\es_adv.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\ble\ble_services\eddystone\es_adv_frame.c</name>    </file>    <file>
@@ -1319,6 +1324,7 @@
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\queue\nrf_queue.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\ringbuf\nrf_ringbuf.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\experimental_section_vars\nrf_section_iter.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\sortlist\nrf_sortlist.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\strerror\nrf_strerror.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\sensorsim\sensorsim.c</name>    </file>  </group>  <group>
   <name>nRF_Crypto backend uECC</name>    <file>
@@ -1388,19 +1394,22 @@
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\crypto\backend\mbedtls\mbedtls_backend_hmac.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\crypto\backend\mbedtls\mbedtls_backend_init.c</name>    </file>  </group>  <group>
   <name>nRF_Oberon_Crypto</name>    <file>
-    <name>$PROJ_DIR$\..\..\..\..\..\..\external\nrf_oberon\lib\cortex-m4\hard-float\short-wchar\liboberon_2.0.7.a</name>    </file>  </group>  <group>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\nrf_oberon\lib\cortex-m4\hard-float\short-wchar\liboberon_3.0.8.a</name>    </file>  </group>  <group>
   <name>nRF_TLS</name>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\aes.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\aesni.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\arc4.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\aria.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\asn1parse.c</name>    </file>    <file>
-    <name>$PROJ_DIR$\..\..\..\..\..\..\external\nrf_tls\mbedtls\replacements\asn1write.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\asn1write.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\base64.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\bignum.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\blowfish.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\camellia.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ccm.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\certs.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\chacha20.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\chachapoly.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\cipher.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\cipher_wrap.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\cmac.c</name>    </file>    <file>
@@ -1410,6 +1419,7 @@
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\dhm.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ecdh.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ecdsa.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ecjpake.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ecp.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ecp_curves.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\entropy.c</name>    </file>    <file>
@@ -1424,6 +1434,8 @@
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\md5.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\md_wrap.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\memory_buffer_alloc.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\net_sockets.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\nist_kw.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\oid.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\padlock.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\pem.c</name>    </file>    <file>
@@ -1435,8 +1447,11 @@
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\pkparse.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\pkwrite.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\platform.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\platform_util.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\poly1305.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ripemd160.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\rsa.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\rsa_internal.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\sha1.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\sha256.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\sha512.c</name>    </file>    <file>
@@ -1444,7 +1459,7 @@
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ssl_ciphersuites.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ssl_cli.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ssl_cookie.c</name>    </file>    <file>
-    <name>$PROJ_DIR$\..\..\..\..\..\..\external\nrf_tls\mbedtls\replacements\ssl_srv.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ssl_srv.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ssl_ticket.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\ssl_tls.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\threading.c</name>    </file>    <file>
@@ -1455,6 +1470,8 @@
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\x509_crl.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\x509_crt.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\x509_csr.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\x509write_crt.c</name>    </file>    <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\x509write_csr.c</name>    </file>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\external\mbedtls\library\xtea.c</name>    </file>  </group>  <group>
   <name>nRF_BLE_Services</name>    <file>
     <name>$PROJ_DIR$\..\..\..\..\..\..\components\ble\ble_services\ble_escs\nrf_ble_escs.c</name>    </file>  </group>  <group>

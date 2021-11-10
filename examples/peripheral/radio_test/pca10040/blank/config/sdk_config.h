@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 - 2019, Nordic Semiconductor ASA
+ * Copyright (c) 2017 - 2021, Nordic Semiconductor ASA
  *
  * All rights reserved.
  *
@@ -52,6 +52,46 @@
 // <o> CLI_EXAMPLE_LOG_QUEUE_SIZE - CLI log queue size 
 #ifndef CLI_EXAMPLE_LOG_QUEUE_SIZE
 #define CLI_EXAMPLE_LOG_QUEUE_SIZE 20
+#endif
+
+// <o> NRF21540_DO_NOT_USE_NATIVE_RADIO_IRQ_HANDLER  
+#ifndef NRF21540_DO_NOT_USE_NATIVE_RADIO_IRQ_HANDLER
+#define NRF21540_DO_NOT_USE_NATIVE_RADIO_IRQ_HANDLER 1
+#endif
+
+// <o> NRF21540_EGU_NO  
+#ifndef NRF21540_EGU_NO
+#define NRF21540_EGU_NO 0
+#endif
+
+// <o> NRF21540_PDN_PPI_CHANNEL_NO  
+#ifndef NRF21540_PDN_PPI_CHANNEL_NO
+#define NRF21540_PDN_PPI_CHANNEL_NO 3
+#endif
+
+// <o> NRF21540_RADIO_DISABLED_EGU_CHANNEL_NO  
+#ifndef NRF21540_RADIO_DISABLED_EGU_CHANNEL_NO
+#define NRF21540_RADIO_DISABLED_EGU_CHANNEL_NO 1
+#endif
+
+// <o> NRF21540_RADIO_DISABLED_TO_EGU_PPI_CHANNEL_NO  
+#ifndef NRF21540_RADIO_DISABLED_TO_EGU_PPI_CHANNEL_NO
+#define NRF21540_RADIO_DISABLED_TO_EGU_PPI_CHANNEL_NO 6
+#endif
+
+// <o> NRF21540_RADIO_READY_EGU_CHANNEL_NO  
+#ifndef NRF21540_RADIO_READY_EGU_CHANNEL_NO
+#define NRF21540_RADIO_READY_EGU_CHANNEL_NO 0
+#endif
+
+// <o> NRF21540_RADIO_READY_TO_EGU_PPI_CHANNEL_NO  
+#ifndef NRF21540_RADIO_READY_TO_EGU_PPI_CHANNEL_NO
+#define NRF21540_RADIO_READY_TO_EGU_PPI_CHANNEL_NO 5
+#endif
+
+// <o> NRF21540_USER_PPI_CHANNEL_NO  
+#ifndef NRF21540_USER_PPI_CHANNEL_NO
+#define NRF21540_USER_PPI_CHANNEL_NO 4
 #endif
 
 // </h> 
@@ -232,6 +272,151 @@
 
 #ifndef NRFX_PRS_CONFIG_DEBUG_COLOR
 #define NRFX_PRS_CONFIG_DEBUG_COLOR 0
+#endif
+
+// </e>
+
+// </e>
+
+// <e> NRFX_TIMER_ENABLED - nrfx_timer - TIMER periperal driver
+//==========================================================
+#ifndef NRFX_TIMER_ENABLED
+#define NRFX_TIMER_ENABLED 1
+#endif
+// <q> NRFX_TIMER0_ENABLED  - Enable TIMER0 instance
+ 
+
+#ifndef NRFX_TIMER0_ENABLED
+#define NRFX_TIMER0_ENABLED 1
+#endif
+
+// <q> NRFX_TIMER1_ENABLED  - Enable TIMER1 instance
+ 
+
+#ifndef NRFX_TIMER1_ENABLED
+#define NRFX_TIMER1_ENABLED 0
+#endif
+
+// <q> NRFX_TIMER2_ENABLED  - Enable TIMER2 instance
+ 
+
+#ifndef NRFX_TIMER2_ENABLED
+#define NRFX_TIMER2_ENABLED 0
+#endif
+
+// <q> NRFX_TIMER3_ENABLED  - Enable TIMER3 instance
+ 
+
+#ifndef NRFX_TIMER3_ENABLED
+#define NRFX_TIMER3_ENABLED 0
+#endif
+
+// <q> NRFX_TIMER4_ENABLED  - Enable TIMER4 instance
+ 
+
+#ifndef NRFX_TIMER4_ENABLED
+#define NRFX_TIMER4_ENABLED 0
+#endif
+
+// <o> NRFX_TIMER_DEFAULT_CONFIG_FREQUENCY  - Timer frequency if in Timer mode
+ 
+// <0=> 16 MHz 
+// <1=> 8 MHz 
+// <2=> 4 MHz 
+// <3=> 2 MHz 
+// <4=> 1 MHz 
+// <5=> 500 kHz 
+// <6=> 250 kHz 
+// <7=> 125 kHz 
+// <8=> 62.5 kHz 
+// <9=> 31.25 kHz 
+
+#ifndef NRFX_TIMER_DEFAULT_CONFIG_FREQUENCY
+#define NRFX_TIMER_DEFAULT_CONFIG_FREQUENCY 0
+#endif
+
+// <o> NRFX_TIMER_DEFAULT_CONFIG_MODE  - Timer mode or operation
+ 
+// <0=> Timer 
+// <1=> Counter 
+
+#ifndef NRFX_TIMER_DEFAULT_CONFIG_MODE
+#define NRFX_TIMER_DEFAULT_CONFIG_MODE 0
+#endif
+
+// <o> NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH  - Timer counter bit width
+ 
+// <0=> 16 bit 
+// <1=> 8 bit 
+// <2=> 24 bit 
+// <3=> 32 bit 
+
+#ifndef NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH
+#define NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH 0
+#endif
+
+// <o> NRFX_TIMER_DEFAULT_CONFIG_IRQ_PRIORITY  - Interrupt priority
+ 
+// <0=> 0 (highest) 
+// <1=> 1 
+// <2=> 2 
+// <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
+
+#ifndef NRFX_TIMER_DEFAULT_CONFIG_IRQ_PRIORITY
+#define NRFX_TIMER_DEFAULT_CONFIG_IRQ_PRIORITY 6
+#endif
+
+// <e> NRFX_TIMER_CONFIG_LOG_ENABLED - Enables logging in the module.
+//==========================================================
+#ifndef NRFX_TIMER_CONFIG_LOG_ENABLED
+#define NRFX_TIMER_CONFIG_LOG_ENABLED 0
+#endif
+// <o> NRFX_TIMER_CONFIG_LOG_LEVEL  - Default Severity level
+ 
+// <0=> Off 
+// <1=> Error 
+// <2=> Warning 
+// <3=> Info 
+// <4=> Debug 
+
+#ifndef NRFX_TIMER_CONFIG_LOG_LEVEL
+#define NRFX_TIMER_CONFIG_LOG_LEVEL 3
+#endif
+
+// <o> NRFX_TIMER_CONFIG_INFO_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef NRFX_TIMER_CONFIG_INFO_COLOR
+#define NRFX_TIMER_CONFIG_INFO_COLOR 0
+#endif
+
+// <o> NRFX_TIMER_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef NRFX_TIMER_CONFIG_DEBUG_COLOR
+#define NRFX_TIMER_CONFIG_DEBUG_COLOR 0
 #endif
 
 // </e>
@@ -665,7 +850,7 @@
 // <31=> 1024 Hz 
 
 #ifndef APP_TIMER_CONFIG_RTC_FREQUENCY
-#define APP_TIMER_CONFIG_RTC_FREQUENCY 0
+#define APP_TIMER_CONFIG_RTC_FREQUENCY 1
 #endif
 
 // <o> APP_TIMER_CONFIG_IRQ_PRIORITY  - Interrupt priority
@@ -958,6 +1143,13 @@
 #define NRF_SECTION_ITER_ENABLED 1
 #endif
 
+// <q> NRF_SORTLIST_ENABLED  - nrf_sortlist - Sorted list
+ 
+
+#ifndef NRF_SORTLIST_ENABLED
+#define NRF_SORTLIST_ENABLED 1
+#endif
+
 // <q> NRF_STRERROR_ENABLED  - nrf_strerror - Library for converting error code to string.
  
 
@@ -1088,6 +1280,13 @@
 
 #ifndef NRF_FPRINTF_FLAG_AUTOMATIC_CR_ON_LF_ENABLED
 #define NRF_FPRINTF_FLAG_AUTOMATIC_CR_ON_LF_ENABLED 1
+#endif
+
+// <q> NRF_FPRINTF_DOUBLE_ENABLED  - Enable IEEE-754 double precision formatting.
+ 
+
+#ifndef NRF_FPRINTF_DOUBLE_ENABLED
+#define NRF_FPRINTF_DOUBLE_ENABLED 0
 #endif
 
 // </h> 
@@ -1269,6 +1468,17 @@
 
 #ifndef NRF_LOG_FILTERS_ENABLED
 #define NRF_LOG_FILTERS_ENABLED 1
+#endif
+
+// <q> NRF_LOG_NON_DEFFERED_CRITICAL_REGION_ENABLED  - Enable use of critical region for non deffered mode when flushing logs.
+ 
+
+// <i> When enabled NRF_LOG_FLUSH is called from critical section when non deffered mode is used.
+// <i> Log output will never be corrupted as access to the log backend is exclusive
+// <i> but system will spend significant amount of time in critical section
+
+#ifndef NRF_LOG_NON_DEFFERED_CRITICAL_REGION_ENABLED
+#define NRF_LOG_NON_DEFFERED_CRITICAL_REGION_ENABLED 0
 #endif
 
 // <o> NRF_LOG_STR_PUSH_BUFFER_SIZE  - Size of the buffer dedicated for strings stored using @ref NRF_LOG_PUSH.
@@ -2617,6 +2827,73 @@
 // <h> nrf_log in nRF_Libraries 
 
 //==========================================================
+// <e> APP_BUTTON_CONFIG_LOG_ENABLED - Enables logging in the module.
+//==========================================================
+#ifndef APP_BUTTON_CONFIG_LOG_ENABLED
+#define APP_BUTTON_CONFIG_LOG_ENABLED 0
+#endif
+// <o> APP_BUTTON_CONFIG_LOG_LEVEL  - Default Severity level
+ 
+// <0=> Off 
+// <1=> Error 
+// <2=> Warning 
+// <3=> Info 
+// <4=> Debug 
+
+#ifndef APP_BUTTON_CONFIG_LOG_LEVEL
+#define APP_BUTTON_CONFIG_LOG_LEVEL 3
+#endif
+
+// <o> APP_BUTTON_CONFIG_INITIAL_LOG_LEVEL  - Initial severity level if dynamic filtering is enabled.
+ 
+
+// <i> If module generates a lot of logs, initial log level can
+// <i> be decreased to prevent flooding. Severity level can be
+// <i> increased on instance basis.
+// <0=> Off 
+// <1=> Error 
+// <2=> Warning 
+// <3=> Info 
+// <4=> Debug 
+
+#ifndef APP_BUTTON_CONFIG_INITIAL_LOG_LEVEL
+#define APP_BUTTON_CONFIG_INITIAL_LOG_LEVEL 3
+#endif
+
+// <o> APP_BUTTON_CONFIG_INFO_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef APP_BUTTON_CONFIG_INFO_COLOR
+#define APP_BUTTON_CONFIG_INFO_COLOR 0
+#endif
+
+// <o> APP_BUTTON_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef APP_BUTTON_CONFIG_DEBUG_COLOR
+#define APP_BUTTON_CONFIG_DEBUG_COLOR 0
+#endif
+
+// </e>
+
 // <e> APP_TIMER_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
 #ifndef APP_TIMER_CONFIG_LOG_ENABLED

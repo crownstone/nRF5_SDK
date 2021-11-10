@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 - 2019, Nordic Semiconductor ASA
+ * Copyright (c) 2017 - 2021, Nordic Semiconductor ASA
  *
  * All rights reserved.
  *
@@ -252,7 +252,7 @@ ret_code_t ndef_file_load(uint8_t * p_buff, uint32_t size)
 
     // If there is no record with given key and file ID,
     // create default message and store in FLASH.
-    if (err_code == FDS_SUCCESS)
+    if (err_code == NRF_SUCCESS)
     {
         NRF_LOG_INFO("Found NDEF file record.");
 

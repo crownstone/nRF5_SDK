@@ -1,4 +1,42 @@
-/*$$$LICENCE_NORDIC_STANDARD<2017>$$$*/
+/**
+ * Copyright (c) 2017 - 2021, Nordic Semiconductor ASA
+ *
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form, except as embedded into a Nordic
+ *    Semiconductor ASA integrated circuit in a product or a software update for
+ *    such product, must reproduce the above copyright notice, this list of
+ *    conditions and the following disclaimer in the documentation and/or other
+ *    materials provided with the distribution.
+ *
+ * 3. Neither the name of Nordic Semiconductor ASA nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * 4. This software, with or without modification, must only be used with a
+ *    Nordic Semiconductor ASA integrated circuit.
+ *
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
+ *
+ * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
+ * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
 
 
 
@@ -18,12 +56,81 @@
 #define BLE_ADVERTISING_ENABLED 0
 #endif
 
-// <q> BLE_DTM_ENABLED  - ble_dtm - Module for testing RF/PHY using DTM commands
- 
-
+// <e> BLE_DTM_ENABLED - ble_dtm - Module for testing RF/PHY using DTM commands
+//==========================================================
 #ifndef BLE_DTM_ENABLED
 #define BLE_DTM_ENABLED 0
 #endif
+// <o> NRF_RADIO_ANTENNA_PIN_1 - Antenna 1 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_1
+#define NRF_RADIO_ANTENNA_PIN_1 21
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_2 - Antenna 2 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_2
+#define NRF_RADIO_ANTENNA_PIN_2 23
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_3 - Antenna 3 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_3
+#define NRF_RADIO_ANTENNA_PIN_3 26
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_4 - Antenna 4 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_4
+#define NRF_RADIO_ANTENNA_PIN_4 27
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_5 - Antenna 5 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_5
+#define NRF_RADIO_ANTENNA_PIN_5 28
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_6 - Antenna 6 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_6
+#define NRF_RADIO_ANTENNA_PIN_6 29
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_7 - Antenna 7 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_7
+#define NRF_RADIO_ANTENNA_PIN_7 30
+#endif
+
+// <o> NRF_RADIO_ANTENNA_PIN_8 - Antenna 8 GPIO pin 
+#ifndef NRF_RADIO_ANTENNA_PIN_8
+#define NRF_RADIO_ANTENNA_PIN_8 31
+#endif
+
+// <o> NRF_RADIO_ANTENNA_COUNT  
+#ifndef NRF_RADIO_ANTENNA_COUNT
+#define NRF_RADIO_ANTENNA_COUNT 12
+#endif
+
+// <o> DTM_RADIO_IRQ_PRIORITY - RADIO interrupt priority 
+#ifndef DTM_RADIO_IRQ_PRIORITY
+#define DTM_RADIO_IRQ_PRIORITY 2
+#endif
+
+// <o> DTM_TIMER_IRQ_PRIORITY - DTM timer interrupt priority 
+#ifndef DTM_TIMER_IRQ_PRIORITY
+#define DTM_TIMER_IRQ_PRIORITY 3
+#endif
+
+// <o> DTM_ANOMALY_172_TIMER_IRQ_PRIORITY - DTM anomaly 172 timer interrupt priority 
+#ifndef DTM_ANOMALY_172_TIMER_IRQ_PRIORITY
+#define DTM_ANOMALY_172_TIMER_IRQ_PRIORITY 2
+#endif
+
+// <o> NRF_DTM_TIMER_INSTANCE  - DTM TIMER instance
+ 
+// <0=> TIMER0 
+// <2=> TIMER2 
+
+#ifndef NRF_DTM_TIMER_INSTANCE
+#define NRF_DTM_TIMER_INSTANCE 0
+#endif
+
+// </e>
 
 // <q> BLE_RACP_ENABLED  - ble_racp - Record Access Control Point library
  
@@ -2039,7 +2146,7 @@
 // <e> NRFX_POWER_ENABLED - nrfx_power - POWER peripheral driver
 //==========================================================
 #ifndef NRFX_POWER_ENABLED
-#define NRFX_POWER_ENABLED 0
+#define NRFX_POWER_ENABLED 1
 #endif
 // <o> NRFX_POWER_CONFIG_IRQ_PRIORITY  - Interrupt priority
  
@@ -3849,7 +3956,7 @@
 #define NRFX_WDT_CONFIG_BEHAVIOUR 1
 #endif
 
-// <o> NRFX_WDT_CONFIG_RELOAD_VALUE - Reload value  <15-4294967295> 
+// <o> NRFX_WDT_CONFIG_RELOAD_VALUE - Reload value in ms  <1-131072000> 
 
 
 #ifndef NRFX_WDT_CONFIG_RELOAD_VALUE
@@ -4031,7 +4138,7 @@
 // <e> POWER_ENABLED - nrf_drv_power - POWER peripheral driver - legacy layer
 //==========================================================
 #ifndef POWER_ENABLED
-#define POWER_ENABLED 0
+#define POWER_ENABLED 1
 #endif
 // <o> POWER_CONFIG_IRQ_PRIORITY  - Interrupt priority
  
@@ -5110,6 +5217,7 @@
 
 // <i> If set, ISO IN endpoint will respond to an IN token with ZLP when no data is ready to be sent.
 // <i> Else, there will be no response.
+// <i> NOTE: This option does not work on Engineering A chip.
 
 #ifndef USBD_CONFIG_ISO_IN_ZLP
 #define USBD_CONFIG_ISO_IN_ZLP 0
@@ -5297,7 +5405,7 @@
 // <31=> 1024 Hz 
 
 #ifndef APP_TIMER_CONFIG_RTC_FREQUENCY
-#define APP_TIMER_CONFIG_RTC_FREQUENCY 0
+#define APP_TIMER_CONFIG_RTC_FREQUENCY 1
 #endif
 
 // <o> APP_TIMER_CONFIG_IRQ_PRIORITY  - Interrupt priority
@@ -5409,22 +5517,31 @@
 #define APP_USBD_PID 0
 #endif
 
-// <o> APP_USBD_DEVICE_VER_MAJOR - Device version, major part.  <0-99> 
+// <o> APP_USBD_DEVICE_VER_MAJOR - Major device version  <0-99> 
 
 
-// <i> Device version, will be converted automatically to BCD notation. Use just decimal values.
+// <i> Major device version, will be converted automatically to BCD notation. Use just decimal values.
 
 #ifndef APP_USBD_DEVICE_VER_MAJOR
 #define APP_USBD_DEVICE_VER_MAJOR 1
 #endif
 
-// <o> APP_USBD_DEVICE_VER_MINOR - Device version, minor part.  <0-99> 
+// <o> APP_USBD_DEVICE_VER_MINOR - Minor device version  <0-9> 
 
 
-// <i> Device version, will be converted automatically to BCD notation. Use just decimal values.
+// <i> Minor device version, will be converted automatically to BCD notation. Use just decimal values.
 
 #ifndef APP_USBD_DEVICE_VER_MINOR
 #define APP_USBD_DEVICE_VER_MINOR 0
+#endif
+
+// <o> APP_USBD_DEVICE_VER_SUB - Sub-minor device version  <0-9> 
+
+
+// <i> Sub-minor device version, will be converted automatically to BCD notation. Use just decimal values.
+
+#ifndef APP_USBD_DEVICE_VER_SUB
+#define APP_USBD_DEVICE_VER_SUB 0
 #endif
 
 // <q> APP_USBD_CONFIG_SELF_POWERED  - Self-powered device, as opposed to bus-powered.
@@ -6450,7 +6567,7 @@
  
 
 #ifndef NRF_SORTLIST_ENABLED
-#define NRF_SORTLIST_ENABLED 0
+#define NRF_SORTLIST_ENABLED 1
 #endif
 
 // <q> NRF_SPI_MNGR_ENABLED  - nrf_spi_mngr - SPI transaction manager
@@ -6686,6 +6803,13 @@
 #define NRF_FPRINTF_FLAG_AUTOMATIC_CR_ON_LF_ENABLED 1
 #endif
 
+// <q> NRF_FPRINTF_DOUBLE_ENABLED  - Enable IEEE-754 double precision formatting.
+ 
+
+#ifndef NRF_FPRINTF_DOUBLE_ENABLED
+#define NRF_FPRINTF_DOUBLE_ENABLED 0
+#endif
+
 // </h> 
 //==========================================================
 
@@ -6787,6 +6911,17 @@
 
 #ifndef NRF_LOG_FILTERS_ENABLED
 #define NRF_LOG_FILTERS_ENABLED 0
+#endif
+
+// <q> NRF_LOG_NON_DEFFERED_CRITICAL_REGION_ENABLED  - Enable use of critical region for non deffered mode when flushing logs.
+ 
+
+// <i> When enabled NRF_LOG_FLUSH is called from critical section when non deffered mode is used.
+// <i> Log output will never be corrupted as access to the log backend is exclusive
+// <i> but system will spend significant amount of time in critical section
+
+#ifndef NRF_LOG_NON_DEFFERED_CRITICAL_REGION_ENABLED
+#define NRF_LOG_NON_DEFFERED_CRITICAL_REGION_ENABLED 0
 #endif
 
 // <o> NRF_LOG_STR_PUSH_BUFFER_SIZE  - Size of the buffer dedicated for strings stored using @ref NRF_LOG_PUSH.
@@ -8135,6 +8270,73 @@
 // <h> nrf_log in nRF_Libraries 
 
 //==========================================================
+// <e> APP_BUTTON_CONFIG_LOG_ENABLED - Enables logging in the module.
+//==========================================================
+#ifndef APP_BUTTON_CONFIG_LOG_ENABLED
+#define APP_BUTTON_CONFIG_LOG_ENABLED 0
+#endif
+// <o> APP_BUTTON_CONFIG_LOG_LEVEL  - Default Severity level
+ 
+// <0=> Off 
+// <1=> Error 
+// <2=> Warning 
+// <3=> Info 
+// <4=> Debug 
+
+#ifndef APP_BUTTON_CONFIG_LOG_LEVEL
+#define APP_BUTTON_CONFIG_LOG_LEVEL 3
+#endif
+
+// <o> APP_BUTTON_CONFIG_INITIAL_LOG_LEVEL  - Initial severity level if dynamic filtering is enabled.
+ 
+
+// <i> If module generates a lot of logs, initial log level can
+// <i> be decreased to prevent flooding. Severity level can be
+// <i> increased on instance basis.
+// <0=> Off 
+// <1=> Error 
+// <2=> Warning 
+// <3=> Info 
+// <4=> Debug 
+
+#ifndef APP_BUTTON_CONFIG_INITIAL_LOG_LEVEL
+#define APP_BUTTON_CONFIG_INITIAL_LOG_LEVEL 3
+#endif
+
+// <o> APP_BUTTON_CONFIG_INFO_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef APP_BUTTON_CONFIG_INFO_COLOR
+#define APP_BUTTON_CONFIG_INFO_COLOR 0
+#endif
+
+// <o> APP_BUTTON_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef APP_BUTTON_CONFIG_DEBUG_COLOR
+#define APP_BUTTON_CONFIG_DEBUG_COLOR 0
+#endif
+
+// </e>
+
 // <e> APP_TIMER_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
 #ifndef APP_TIMER_CONFIG_LOG_ENABLED
@@ -9942,6 +10144,13 @@
 #define NRF_BLE_GATT_BLE_OBSERVER_PRIO 1
 #endif
 
+// <o> NRF_BLE_GQ_BLE_OBSERVER_PRIO  
+// <i> Priority with which BLE events are dispatched to the GATT Queue module.
+
+#ifndef NRF_BLE_GQ_BLE_OBSERVER_PRIO
+#define NRF_BLE_GQ_BLE_OBSERVER_PRIO 1
+#endif
+
 // <o> NRF_BLE_QWR_BLE_OBSERVER_PRIO  
 // <i> Priority with which BLE events are dispatched to the Queued writes module.
 
@@ -10157,13 +10366,6 @@
 // <h> SoC Observers priorities - Invididual priorities
 
 //==========================================================
-// <o> BLE_ADV_SOC_OBSERVER_PRIO  
-// <i> Priority with which SoC events are dispatched to the Advertising module.
-
-#ifndef BLE_ADV_SOC_OBSERVER_PRIO
-#define BLE_ADV_SOC_OBSERVER_PRIO 1
-#endif
-
 // <o> BLE_DFU_SOC_OBSERVER_PRIO  
 // <i> Priority with which BLE events are dispatched to the DFU Service.
 

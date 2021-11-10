@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 - 2019, Nordic Semiconductor ASA
+ * Copyright (c) 2018 - 2021, Nordic Semiconductor ASA
  *
  * All rights reserved.
  *
@@ -153,6 +153,8 @@ static void log_init(void)
     APP_ERROR_CHECK(err_code);
 }
 
+// Timer for refreshing scanned devices data.
+APP_TIMER_DEF(m_adv_list_timer);
 
 /**@brief Function for initializing the timer.
  */
@@ -162,12 +164,10 @@ static void timer_init(void)
 
     APP_ERROR_CHECK(err_code);
 
-    // Timer for refreshing scanned devices data.
-    APP_TIMER_DEF(adv_list_timer);
-    err_code = app_timer_create(&adv_list_timer, APP_TIMER_MODE_REPEATED, adv_list_timer_handle);
+    err_code = app_timer_create(&m_adv_list_timer, APP_TIMER_MODE_REPEATED, adv_list_timer_handle);
     APP_ERROR_CHECK(err_code);
 
-    err_code = app_timer_start(adv_list_timer, FOUND_DEVICE_REFRESH_TIME, NULL);
+    err_code = app_timer_start(m_adv_list_timer, FOUND_DEVICE_REFRESH_TIME, NULL);
     APP_ERROR_CHECK(err_code);
 }
 
@@ -192,7 +192,7 @@ static void idle_state_handler(void)
     err_code = nrf_ble_lesc_request_handler();
     APP_ERROR_CHECK(err_code);
     
-#if defined(ADAFRUIT_SHIELD) && (ADAFRUIT_SHIELD == 1)
+#if NRF_MODULE_ENABLED(ADAFRUIT_SHIELD)
     nfc_tag_process();
 #endif // ADAFRUIT_SHIELD
 
