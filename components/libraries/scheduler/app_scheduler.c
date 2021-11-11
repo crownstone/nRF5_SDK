@@ -83,6 +83,16 @@ static __INLINE uint8_t next_index(uint8_t index)
     return (index < m_queue_size) ? (index + 1) : 0;
 }
 
+/**@brief Function for decrementing a queue index, and handle wrap-around.
+ *
+ * @param[in]   index   Old index.
+ *
+ * @return      New (decremented) index.
+ */
+static __INLINE uint8_t prev_index(uint8_t index)
+{
+    return (index == 0) ? m_queue_size : (index - 1);
+}
 
 static __INLINE uint8_t app_sched_queue_full()
 {
