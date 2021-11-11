@@ -692,6 +692,16 @@ ret_code_t fds_record_id_from_desc(fds_record_desc_t const * p_desc,
  */
 ret_code_t fds_stat(fds_stat_t * p_stat);
 
+/**@brief   Function to retrieve the end of flash memory.
+ *
+ * This function gets the end address of flash memory taking into account the pages required for FDS.
+ * Normally, this function is not available to user space.
+ *
+ * This is a patch from Crownstone.
+ *
+ * @retval  address at the end of flash corrected for FDS pages.
+ */
+uint32_t fds_flash_end_addr(void);
 
 /** @} */
 
