@@ -164,6 +164,21 @@ uint32_t app_sched_event_put(void const *              p_event_data,
                              uint16_t                  event_size,
                              app_sched_event_handler_t handler);
 
+/**@brief Function for scheduling an event but not allowing for duplicates.
+ *
+ * @details Puts an event into the event queue except when it is a duplicate.
+ *
+ * @param[in]   p_event_data   Pointer to event data to be scheduled.
+ * @param[in]   event_size     Size of event data to be scheduled.
+ * @param[in]   handler        Event handler to receive the event.
+ *
+ * @return      NRF_SUCCESS on success, otherwise an error code.
+ */
+uint32_t app_sched_event_put_without_duplicates(
+                             void const *              p_event_data,
+                             uint16_t                  event_size,
+                             app_sched_event_handler_t handler);
+
 /**@brief Function for getting the maximum observed queue utilization.
  *
  * Function for tuning the module and determining QUEUE_SIZE value and thus module RAM usage.

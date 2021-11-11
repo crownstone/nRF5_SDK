@@ -219,6 +219,80 @@ uint32_t app_sched_event_put(void const              * p_event_data,
     return err_code;
 }
 
+/**
+ * This is a patched version of app_sched_event. See nrf_sdh.c for how it is
+ * used.
+ *
+ * Remark: this will prevent any duplicate event to be added to the
+ * app_scheduler. It is not only preventing duplicates for a subset of
+ * app_sched_event_handler_t objects. Just call app_sched_event_put in almost
+ * all cases.
+ */
+uint32_t app_sched_event_put_without_duplicates(
+                             void const              * p_event_data,
+                             uint16_t                  event_data_size,
+                             app_sched_event_handler_t handler)
+{
+    uint32_t err_code;
+
+    if (event_data_size <= m_queue_event_size)
+    {
+        uint16_t event_index = 0xFFFF;
+
+        CRITICAL_REGION_ENTER();
+
+        if (!APP_SCHED_QUEUE_FULL())
+        {
+            event_index            = m_queue_end_index;
+            uint8_t prev_end_index = prev_index(m_queue_end_index);
+            if (!app_sched_queue_empty()
+                    && prev_end_index != m_queue_start_index
+                    && m_queue_event_headers[prev_end_index].handler == handler) {
+                event_index = 0xFFFE;
+            }
+        #if APP_SCHEDULER_WITH_PROFILER
+            // This function call must be protected with critical region because
+            // it modifies 'm_max_queue_utilization'.
+            queue_utilization_check();
+        #endif
+        }
+
+        CRITICAL_REGION_EXIT();
+
+        if (event_index == 0xFFFE) {
+            return NRF_SUCCESS;
+        }
+        if (event_index != 0xFFFF)
+        {
+            // NOTE: This can be done outside the critical region since the event consumer will
+            //       always be called from the main loop, and will thus never interrupt this code.
+            m_queue_event_headers[event_index].handler = handler;
+            if ((p_event_data != NULL) && (event_data_size > 0))
+            {
+                memcpy(&m_queue_event_data[event_index * m_queue_event_size],
+                       p_event_data,
+                       event_data_size);
+                m_queue_event_headers[event_index].event_data_size = event_data_size;
+            }
+            else
+            {
+                m_queue_event_headers[event_index].event_data_size = 0;
+            }
+
+            err_code = NRF_SUCCESS;
+        }
+        else
+        {
+            err_code = NRF_ERROR_NO_MEM;
+        }
+    }
+    else
+    {
+        err_code = NRF_ERROR_INVALID_LENGTH;
+    }
+
+    return err_code;
+}
 
 #if APP_SCHEDULER_WITH_PAUSE
 void app_sched_pause(void)

@@ -384,10 +384,32 @@ static void appsh_events_poll(void * p_event_data, uint16_t event_size)
     nrf_sdh_evts_poll();
 }
 
+// The default app scheduler behaviour can be enabled by setting patch to 0
+#ifndef APP_SCHEDULER_FILTER_ON_DUPLICATES_PATCH
+#define APP_SCHEDULER_FILTER_ON_DUPLICATES_PATCH 1
+#endif
 
+/**
+ * In the mesh code when a connection is coming in, it can happen that there
+ * are quite a few moments where it's getting an NRF_EVT_RADIO_BLOCKED. When
+ * it is blocked it will add an SD event to the app scheduler. The way it is
+ * implemented it can do this in rapid succession filling up the scheduler.
+ * A single appsh_events_poll() method on the scheduler queue is already 
+ * sufficient (it will get all events).
+ *
+ * Hence, this workaround will only put events on it that aren't duplicates.
+ *
+ * See for the problem description:
+ * + https://devzone.nordicsemi.com/f/nordic-q-a/71360/softdevice-event-handler-continuously-called-with-nrf_evt_radio_blocked
+ * + https://devzone.nordicsemi.com/f/nordic-q-a/80616/scheduler-get-full-by-nrf_evt_radio_blocked-events-during-connect
+ */
 void SD_EVT_IRQHandler(void)
 {
+#if APP_SCHEDULER_FILTER_ON_DUPLICATES_PATCH == 1
+    ret_code_t ret_code = app_sched_event_put_without_duplicates(NULL, 0, appsh_events_poll);
+#else
     ret_code_t ret_code = app_sched_event_put(NULL, 0, appsh_events_poll);
+#endif
     APP_ERROR_CHECK(ret_code);
 }
 
