@@ -260,6 +260,10 @@ uint32_t app_sched_event_put_without_duplicates(
                     && m_queue_event_headers[prev_end_index].handler == handler) {
                 event_index = 0xFFFE;
             }
+            else {
+                m_queue_end_index = next_index(m_queue_end_index);
+            }
+
         #if APP_SCHEDULER_WITH_PROFILER
             // This function call must be protected with critical region because
             // it modifies 'm_max_queue_utilization'.
