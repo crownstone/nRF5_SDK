@@ -174,15 +174,17 @@ uint32_t nrf_dfu_cache_prepare(const uint32_t required_size, bool single_bank, b
                 break;
         }
 
-        ASSERT(cache_address <= DFU_REGION_END(bootloader_start_addr));
-        cache_too_small = required_size > (DFU_REGION_END(bootloader_start_addr) - cache_address);
-        delete_more     = cache_too_small || single_bank; // Delete app or SoftDevice only if we need more room, or if single bank is requested.
+		cache_too_small = required_size > (DFU_REGION_END(bootloader_start_addr) - cache_address);
+		delete_more     = cache_too_small || single_bank; // Delete app or SoftDevice only if we need more room, or if single bank is requested.
 
-        NRF_LOG_DEBUG("pass: %d.", pass);
-        NRF_LOG_DEBUG("cache_address: 0x%x.", cache_address);
-        NRF_LOG_DEBUG("cache_too_small: %s.", cache_too_small ? "true" : "false");
-        NRF_LOG_DEBUG("keep_firmware: %s.",   keep_firmware   ? "true" : "false");
-        NRF_LOG_DEBUG("delete_more: %s.",     delete_more     ? "true" : "false");
+		NRF_LOG_DEBUG("pass: %d.", pass);
+		NRF_LOG_DEBUG("cache_address: 0x%x.", cache_address);
+		NRF_LOG_INFO("bootloader region end: 0x%x", DFU_REGION_END(bootloader_start_addr));
+		NRF_LOG_DEBUG("keep_firmware: %s.",   keep_firmware   ? "true" : "false");
+		NRF_LOG_DEBUG("cache_too_small: %s.", cache_too_small ? "true" : "false");
+		NRF_LOG_DEBUG("delete_more: %s.",     delete_more     ? "true" : "false");
+
+		ASSERT(cache_address <= DFU_REGION_END(bootloader_start_addr));
 
         if (!delete_more || keep_firmware || (pass >= SOFTDEVICE_DELETED))
         {

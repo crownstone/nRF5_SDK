@@ -48,6 +48,7 @@
 
 #define NRF_LOG_MODULE_NAME nrf_dfu_flash
 #include "nrf_log.h"
+#include "nrf_log_ctrl.h"
 NRF_LOG_MODULE_REGISTER();
 
 
@@ -82,6 +83,8 @@ void dfu_fstorage_evt_handler(nrf_fstorage_evt_t * p_evt)
                       (p_evt->id == NRF_FSTORAGE_EVT_WRITE_RESULT) ? "write" : "erase",
                       p_evt->result, p_evt->addr, p_evt->len, m_flash_operations_pending);
     }
+
+    NRF_LOG_FLUSH();
 
     if (p_evt->p_param)
     {
@@ -123,6 +126,7 @@ ret_code_t nrf_dfu_flash_store(uint32_t                   dest,
 
     NRF_LOG_DEBUG("nrf_fstorage_write(addr=%p, src=%p, len=%d bytes), queue usage: %d",
                   dest, p_src, len, m_flash_operations_pending);
+    NRF_LOG_FLUSH();
 
     //lint -save -e611 (Suspicious cast)
     rc = nrf_fstorage_write(&m_fs, dest, p_src, len, (void *)callback);
@@ -149,6 +153,7 @@ ret_code_t nrf_dfu_flash_erase(uint32_t                 page_addr,
 
     NRF_LOG_DEBUG("nrf_fstorage_erase(addr=0x%p, len=%d pages), queue usage: %d",
                   page_addr, num_pages, m_flash_operations_pending);
+    NRF_LOG_FLUSH();
 
     //lint -save -e611 (Suspicious cast)
     rc = nrf_fstorage_erase(&m_fs, page_addr, num_pages, (void *)callback);

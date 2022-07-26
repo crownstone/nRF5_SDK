@@ -310,7 +310,7 @@ static ret_code_t settings_write(void                   * p_dst,
 
     if (memcmp(p_dst, p_src, sizeof(nrf_dfu_settings_t)) == 0)
     {
-        NRF_LOG_DEBUG("Destination settings are identical to source, write not needed. Skipping.");
+        NRF_LOG_DEBUG("Destination settings are identical to source. Skipping write.");
         if (callback != NULL)
         {
             callback(NULL);
@@ -324,8 +324,7 @@ static ret_code_t settings_write(void                   * p_dst,
         return NRF_ERROR_FORBIDDEN;
     }
 
-    NRF_LOG_DEBUG("Writing settings...");
-    NRF_LOG_DEBUG("Erasing old settings at: 0x%08x", p_dst);
+    NRF_LOG_DEBUG("Start write operation. Erasing old settings at: 0x%08x", p_dst);
 
     // Not setting the callback function because ERASE is required before STORE
     // Only report completion on successful STORE.
