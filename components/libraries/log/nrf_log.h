@@ -110,7 +110,7 @@ extern "C" {
 
 #define NRF_LOG_ERROR(...)                     NRF_LOG_INTERNAL_ERROR(__VA_ARGS__)
 #define NRF_LOG_WARNING(...)                   NRF_LOG_INTERNAL_WARNING( __VA_ARGS__)
-#define NRF_LOG_INFO(...)                      NRF_LOG_INTERNAL_INFO( __VA_ARGS__)
+#define NRF_LOG_INFO(...)                      NRF_LOG_INTERNAL_INFO("debug:" __VA_ARGS__)
 #define NRF_LOG_DEBUG(...)                     NRF_LOG_INTERNAL_DEBUG( __VA_ARGS__)
 
 /** @def NRF_LOG_INST_ERROR
