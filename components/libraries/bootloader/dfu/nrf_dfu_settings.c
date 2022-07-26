@@ -239,11 +239,11 @@ ret_code_t nrf_dfu_settings_init(bool sd_irq_initialized)
 
     if (settings_valid)
     {
-        NRF_LOG_DEBUG("Using settings page.");
+        NRF_LOG_DEBUG("settings page valid.");
         memcpy(&s_dfu_settings, m_dfu_settings_buffer, sizeof(nrf_dfu_settings_t));
         if (settings_backup_valid)
         {
-            NRF_LOG_DEBUG("Copying forbidden parts from backup page.");
+            NRF_LOG_DEBUG("settings backup valid. Copying forbidden parts.");
             settings_forbidden_parts_copy_from_backup((uint8_t *)&s_dfu_settings);
         }
     }

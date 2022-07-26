@@ -376,7 +376,7 @@ nrf_bootloader_fw_activation_result_t nrf_bootloader_fw_activate(void)
     nrf_dfu_bank_t                      * p_bank    = &s_dfu_settings.bank_1;
     bool                                  sd_update = false;
 
-    NRF_LOG_DEBUG("Enter nrf_bootloader_fw_activate");
+    NRF_LOG_DEBUG("nrf_bootloader_fw_activate");
 
     switch (p_bank->bank_code)
     {
