@@ -225,7 +225,7 @@ static void settings_forbidden_parts_copy_from_backup(uint8_t * p_dst_addr)
 
 ret_code_t nrf_dfu_settings_init(bool sd_irq_initialized)
 {
-    NRF_LOG_DEBUG("Calling nrf_dfu_settings_init()...");
+    NRF_LOG_DEBUG("nrf_dfu_settings_init");
 
     ret_code_t err_code = nrf_dfu_flash_init(sd_irq_initialized);
     if (err_code != NRF_SUCCESS)
