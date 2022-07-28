@@ -215,7 +215,7 @@ static uint32_t sd_activate(void)
 
     if (SD_MAGIC_NUMBER_GET(src_addr) != SD_MAGIC_NUMBER)
     {
-        NRF_LOG_ERROR("Source address does not contain a valid SoftDevice.")
+        NRF_LOG_ERROR("Source address does not contain a valid SoftDevice.");
         return NRF_ERROR_INTERNAL;
     }
 

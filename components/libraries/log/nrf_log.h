@@ -83,7 +83,8 @@ extern "C" {
 /**
  * Checks isr status and only call argument if called from main context.
  */
-#define ISR_GUARD(...) do { if(__get_IPSR() == 0) { __VA_ARGS__; }} while(0)
+#define ISR_GUARD(...) { if(__get_IPSR() == 0) { __VA_ARGS__; }}
+//#define ISR_GUARD(...) __VA_ARGS__
 
 /** @def NRF_LOG_ERROR
  *  @brief Macro for logging error messages. It takes a printf-like, formatted
