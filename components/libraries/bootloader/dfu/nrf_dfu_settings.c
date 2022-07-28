@@ -225,7 +225,7 @@ static void settings_forbidden_parts_copy_from_backup(uint8_t * p_dst_addr)
 
 ret_code_t nrf_dfu_settings_init(bool sd_irq_initialized)
 {
-    NRF_LOG_DEBUG("nrf_dfu_settings_init");
+//    NRF_LOG_DEBUG("nrf_dfu_settings_init");
 
     ret_code_t err_code = nrf_dfu_flash_init(sd_irq_initialized);
     if (err_code != NRF_SUCCESS)
@@ -239,18 +239,18 @@ ret_code_t nrf_dfu_settings_init(bool sd_irq_initialized)
 
     if (settings_valid)
     {
-        NRF_LOG_DEBUG("settings page valid.");
+//        NRF_LOG_DEBUG("settings page valid.");
         memcpy(&s_dfu_settings, m_dfu_settings_buffer, sizeof(nrf_dfu_settings_t));
         if (settings_backup_valid)
         {
-            NRF_LOG_DEBUG("settings backup valid. Copying forbidden parts.");
+//            NRF_LOG_DEBUG("settings backup valid. Copying forbidden parts.");
             settings_forbidden_parts_copy_from_backup((uint8_t *)&s_dfu_settings);
         }
     }
     else if (settings_backup_valid)
     {
-        NRF_LOG_INFO("Restoring settings from backup since the settings page contents are "
-                     "invalid (CRC error).");
+//        NRF_LOG_INFO("Restoring settings from backup since the settings page contents are "
+//                     "invalid (CRC error).");
         memcpy(&s_dfu_settings,
                mp_dfu_settings_backup_buffer,
                sizeof(nrf_dfu_settings_t));
@@ -372,7 +372,7 @@ void settings_backup(nrf_dfu_flash_callback_t callback, void * p_src)
     NRF_LOG_INFO("Settings backup not available from app.");
 #else
     static nrf_dfu_settings_t dfu_settings_buffer;
-    NRF_LOG_INFO("Backing up settings page to address 0x%x.", mp_dfu_settings_backup_buffer);
+//    NRF_LOG_INFO("Backing up settings page to address 0x%x.", mp_dfu_settings_backup_buffer);
     ASSERT(crc_ok(p_src));
     ret_code_t err_code = settings_write(mp_dfu_settings_backup_buffer,
                                          p_src,

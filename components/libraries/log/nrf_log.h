@@ -80,12 +80,6 @@ extern "C" {
 
 #include "nrf_log_internal.h"
 
-/**
- * Checks isr status and only call argument if called from main context.
- */
-#define ISR_GUARD(...) { if(__get_IPSR() == 0) { __VA_ARGS__; }}
-//#define ISR_GUARD(...) __VA_ARGS__
-
 /** @def NRF_LOG_ERROR
  *  @brief Macro for logging error messages. It takes a printf-like, formatted
  *  string with up to seven arguments.
@@ -114,10 +108,10 @@ extern "C" {
  *  @details This macro is compiled only if @ref NRF_LOG_LEVEL includes debug logs.
  */
 
-#define NRF_LOG_ERROR(...)                     ISR_GUARD(NRF_LOG_INTERNAL_ERROR(__VA_ARGS__))
-#define NRF_LOG_WARNING(...)                   ISR_GUARD(NRF_LOG_INTERNAL_WARNING( __VA_ARGS__))
-#define NRF_LOG_INFO(...)                      ISR_GUARD(NRF_LOG_INTERNAL_INFO( __VA_ARGS__))
-#define NRF_LOG_DEBUG(...)                     ISR_GUARD(NRF_LOG_INTERNAL_DEBUG( __VA_ARGS__))
+#define NRF_LOG_ERROR(...)                     NRF_LOG_INTERNAL_ERROR(__VA_ARGS__)
+#define NRF_LOG_WARNING(...)                   NRF_LOG_INTERNAL_WARNING( __VA_ARGS__)
+#define NRF_LOG_INFO(...)                      NRF_LOG_INTERNAL_INFO( __VA_ARGS__)
+#define NRF_LOG_DEBUG(...)                     NRF_LOG_INTERNAL_DEBUG( __VA_ARGS__)
 /** @def NRF_LOG_INST_ERROR
  *  @brief Macro for logging error messages for a given module instance. It takes a printf-like, formatted
  *  string with up to seven arguments.
