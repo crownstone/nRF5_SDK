@@ -138,7 +138,7 @@ static void rtc_update(uint32_t cc_channel, uint32_t cc_value)
  */
 static void timer_activate(dfu_timer_t * p_timer, uint32_t timeout_ticks)
 {
-    NRF_LOG_DEBUG("timer_activate (0x%x)", p_timer);
+//    NRF_LOG_DEBUG("timer_activate (0x%x)", p_timer);
 
     ASSERT(timeout_ticks <= MAX_TIMEOUT_TICKS);
     ASSERT(timeout_ticks >= NRF_BOOTLOADER_MIN_TIMEOUT_TICKS);
@@ -165,7 +165,7 @@ static void timer_activate(dfu_timer_t * p_timer, uint32_t timeout_ticks)
  */
 static void timer_stop(dfu_timer_t * p_timer)
 {
-    NRF_LOG_DEBUG("timer_stop (0x%x)", p_timer);
+//    NRF_LOG_DEBUG("timer_stop (0x%x)", p_timer);
     nrf_rtc_int_disable(RTC_STRUCT, RTC_CHANNEL_INT_MASK(p_timer->cc_channel));
 }
 
@@ -181,7 +181,7 @@ static void timer_stop(dfu_timer_t * p_timer)
  */
 static void timer_fire(dfu_timer_t * p_timer)
 {
-    NRF_LOG_DEBUG("timer_fire (0x%x)", p_timer);
+//    NRF_LOG_DEBUG("timer_fire (0x%x)", p_timer);
 
     if (p_timer->timeout != 0)
     {
