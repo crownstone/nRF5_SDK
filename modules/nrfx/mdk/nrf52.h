@@ -146,7 +146,7 @@ typedef enum {
 
 
 /** @} */ /* End of group Configuration_of_CMSIS */
-
+#pragma message("nrf52.h includes; core_cm4.h")
 #include "core_cm4.h"                           /*!< ARM Cortex-M4 processor and core peripherals                              */
 #include "system_nrf52.h"                       /*!< nrf52 System                                                              */
 
