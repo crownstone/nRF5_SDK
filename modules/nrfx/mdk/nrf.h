@@ -69,41 +69,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endif
    
 
-
-// ------------------
-/* Device selection for device includes. */
-#if defined (NRF51)
-#pragma message("nrf.h series: NRF51")
-
-#elif defined (NRF52810_XXAA)
-#pragma message("nrf.h series: NRF52810_XXAA")
-
-#elif defined (NRF52811_XXAA)
-#pragma message("nrf.h series: NRF52811_XXAA")
-
-#elif defined (NRF52832_XXAA) || defined (NRF52832_XXAB)
-#pragma message("nrf.h series: NRF52832_XXAA || NRF52832_XXAB")
-
-#elif defined (NRF52840_XXAA)
-#pragma message("nrf.h series: NRF52840_XXAA")
-
-#elif defined (NRF9160_XXAA)
-#pragma message("nrf.h series: NRF9160_XXAA")
-
-#else
-#pragma message("nrf.h series: other")
-
-#endif /* NRF51, NRF52810_XXAA, NRF52811_XXAA, NRF52832_XXAA, NRF52832_XXAB, NRF52840_XXAA, NRF9160_XXAA */
-
-// 00000000000000
-
-
-
 #if defined(_WIN32)
     /* Do not include nrf specific files when building for PC host */
 #elif defined(__unix)
     /* Do not include nrf specific files when building for PC host */
-#pragma message("nrf.h unix include")
 #elif defined(__APPLE__)
     /* Do not include nrf specific files when building for PC host */
 #else
@@ -121,17 +90,20 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	#include "nrf52810_bitfields.h"
 	#include "nrf51_to_nrf52810.h"
 	#include "nrf52_to_nrf52810.h"
+
 #elif defined (NRF52811_XXAA)
 	#include "nrf52811.h"
 	#include "nrf52811_bitfields.h"
 	#include "nrf51_to_nrf52810.h"
 	#include "nrf52_to_nrf52810.h"
 	#include "nrf52810_to_nrf52811.h"
+
 #elif defined (NRF52832_XXAA) || defined (NRF52832_XXAB)
 	#include "nrf52.h"
 	#include "nrf52_bitfields.h"
 	#include "nrf51_to_nrf52.h"
 	#include "nrf52_name_change.h"
+
 #elif defined (NRF52840_XXAA)
 	#include "nrf52840.h"
 	#include "nrf52840_bitfields.h"
