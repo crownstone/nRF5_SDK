@@ -58,6 +58,7 @@ extern "C" {
 #define NRF_P0 NRF_GPIO
 #endif
 
+
 #if (GPIO_COUNT == 1)
 #define NUMBER_OF_PINS (P0_PIN_NUM)
 #define GPIO_REG_LIST  {NRF_P0}
@@ -65,7 +66,12 @@ extern "C" {
 #define NUMBER_OF_PINS (P0_PIN_NUM + P1_PIN_NUM)
 #define GPIO_REG_LIST  {NRF_P0, NRF_P1}
 #else
-#error "Not supported."
+// #warning "Mocking pins in nrf_gpio.h"
+#define CS_PIN_NONE nullptr
+#undef GPIO_COUNT
+#define GPIO_COUNT 0
+#define NUMBER_OF_PINS 0
+#define GPIO_REG_LIST  {}
 #endif
 
 
@@ -486,7 +492,7 @@ __STATIC_INLINE NRF_GPIO_Type * nrf_gpio_pin_port_decode(uint32_t * p_pin)
     NRFX_ASSERT(*p_pin < NUMBER_OF_PINS);
 #if (GPIO_COUNT == 1)
     return NRF_P0;
-#else
+#elif (GPIO_COUNT == 2)
     if (*p_pin < P0_PIN_NUM)
     {
         return NRF_P0;
@@ -496,6 +502,8 @@ __STATIC_INLINE NRF_GPIO_Type * nrf_gpio_pin_port_decode(uint32_t * p_pin)
         *p_pin = *p_pin & (P0_PIN_NUM - 1);
         return NRF_P1;
     }
+#else
+    return CS_PIN_NONE;
 #endif
 }
 
