@@ -134,7 +134,7 @@ uint32_t app_sched_init(uint16_t event_size, uint16_t queue_size, void * p_event
     return NRF_SUCCESS;
 }
 
-
+a;sdf
 uint16_t app_sched_queue_space_get()
 {
     uint16_t start = m_queue_start_index;
@@ -309,4 +309,7 @@ void app_sched_execute(void)
         m_queue_start_index = next_index(m_queue_start_index);
     }
 }
+#else
+float hello_world = 3.14f;
+#pragma message("NRF_MODULE_ENABLED(APP_SCHEDULER) not enabled!")
 #endif //NRF_MODULE_ENABLED(APP_SCHEDULER)
