@@ -86,7 +86,7 @@
 extern "C" {
 #endif
 
-#define APP_SCHED_EVENT_HEADER_SIZE 8       /**< Size of app_scheduler.event_header_t (only for use inside APP_SCHED_BUF_SIZE()). */
+#define APP_SCHED_EVENT_HEADER_SIZE 16       /**< Size of app_scheduler.event_header_t (only for use inside APP_SCHED_BUF_SIZE()). */
 
 /**@brief Compute number of bytes required to hold the scheduler buffer.
  *
