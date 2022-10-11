@@ -7,10 +7,10 @@
 
 
 #include "sdk_common.h"
-//#include "timers.h"
 #include "app_timer.h"
 #include <stdlib.h>
 
+//#include "timers.h"
 //#include "nrf.h"
 //#include "app_error.h"
 
